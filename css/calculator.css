@@ -1,0 +1,41 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  padding: 3rem;
+  font-size: large;
+}
+
+.ielts,
+.tcf,
+.tef {
+  display: none;
+}
+
+label {
+  display: block !important;
+  font-weight: 400;
+}
+
+.drop-input,
+option {
+  height: 3rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.radio-buttons {
+  display: flex;
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/overlay.css" />
+  </head>
+  <body>
+    <!-- header section starts  -->
+
+    <header class="header">
+      <a href="home.html" class="logo">Tech - Arch</a>
+
+      <div id="menu-btn" class="fas fa-bars"></div>
+
+      <nav class="navbar">
+        <ul>
+          <li><a href="/html/appointment.html">Schedule Appointment</a></li>
+          <li><a href="/html/documents.html">News & Update</a></li>
+          <li><a href="/html/calculator.html">CRS Calculator</a></li>
+          <li><a href="/html/index.html">Logout</a></li>
+          <li><a href="/html/exp.html">Exp</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="home">
+      <div class="image">
+        <img src="/image/pionts.svg" alt="" />
+      </div>
+
+      <div class="content">
+        <h3>Immigration Platform</h3>
+        <p></p>
+        <a> <button id="openSignIn" class="btn">Sign In</button></a>
+        <a> <button id="openSignUp" class="btn">Sign Up</button></a>
+        <a href="#" class="btn">Calculate CRS Score </a>
+      </div>
+    </section>
+
+    <!-- Sign In OverLay -->
+    <section class="category">
+      <div id="overlay" class="overlay">
+        <div class="overlay-content">
+          <span class="close" id="closeSignIn">&times;</span>
+          <h2>Sign In</h2>
+          <form>
+            <div class="sign_container">
+              <form action="/signin" method="POST">
+                <div class="form-group">
+                  <label for="email">Email:</label>
+                  <input type="email" id="email" name="email" required />
+                </div>
+                <div class="form-group">
+                  <label for="password">Password:</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                  />
+                </div>
+
+                <button type="submit" class="btn btn-primary">Sign in</button>
+              </form>
+              <p class="signup-link">
+                Don't have an account? <a href="/html/signup.html">Signup</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Sign up Overlay -->
+
+      <div id="overlay2" class="overlay">
+        <div class="overlay-content">
+          <span class="close" id="closeSignUp">&times;</span>
+          <h2>Sign Up</h2>
+          <form action="/signup" method="POST">
+            <div class="sign_container">
+              <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required />
+              </div>
+
+              <button type="submit" class="btn btn-primary">Signup</button>
+            </div>
+          </form>
+          <p class="signin-link">
+            Already have an account?
+            <a> <button id="openSignIn" class="btn">Sign In</button></a>
+          </p>
+        </div>
+      </div>
+
+      <a href="/html/calculator.html" class="box">
+        <img src="/image/progress.svg" alt="" />
+        <h3>Check Your Eligiblity</h3>
+      </a>
+
+      <a href="/html/documents.html" class="box">
+        <img src="/image/documents.svg" alt="" />
+        <h3>Upload Your Documents</h3>
+      </a>
+
+      <a href="/html/appointment.html" class="box">
+        <img src="/image/meeting.svg" alt="" />
+        <h3>Schedule your Appointment</h3>
+      </a>
+
+      <a href="/html/news.html" class="box">
+        <img src="/image/news.svg" alt="" />
+        <h3>News and Updates</h3>
+      </a>
+    </section>
+
+    <script src="/js/overlay.js"></script>
+  </body>
+</html>

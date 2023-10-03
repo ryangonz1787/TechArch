@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Overlay Sign-In Example</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* styles.css */
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 1;
+      }
+
+      .overlay-content {
+        background-color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        border-radius: 5px;
+      }
+
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="openSignIn">Sign In</button>
+
+    <!-- Overlay Container -->
+    <div id="overlay" class="overlay">
+      <div class="overlay-content">
+        <span class="close" id="closeSignIn">&times;</span>
+        <h2>Sign In</h2>
+        <form>
+          <div class="sign_container">
+            <form action="/signin" method="POST">
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required />
+              </div>
+
+              <button type="submit" class="btn btn-primary">Sign in</button>
+            </form>
+            <p class="signup-link">
+              Don't have an account? <a href="/html/signup.html">Signup</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // script.js
+      const openSignInButton = document.getElementById("openSignIn");
+      const closeSignInButton = document.getElementById("closeSignIn");
+      const overlay = document.getElementById("overlay");
+
+      openSignInButton.addEventListener("click", () => {
+        overlay.style.display = "block";
+      });
+
+      closeSignInButton.addEventListener("click", () => {
+        overlay.style.display = "none";
+      });
+    </script>
+  </body>
+</html>
