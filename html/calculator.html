@@ -39,7 +39,7 @@
                   type="radio"
                   class="drop-input input-marital-status"
                   name="marital-status"
-                  value="annulled-marriage"
+                  value="without"
                   id="annulled-marriage"
                 />
                 Annulled Marriage
@@ -49,7 +49,7 @@
                   type="radio"
                   class="drop-input input-marital-status"
                   name="marital-status"
-                  value="common-law"
+                  value="with"
                   id="common-law"
                   required
                 />
@@ -60,7 +60,7 @@
                   type="radio"
                   class="drop-input input-marital-status"
                   name="marital-status"
-                  value="divorce-separated"
+                  value="without"
                   id="divorce-separated"
                   required
                 />
@@ -71,7 +71,7 @@
                   type="radio"
                   class="drop-input input-marital-status"
                   name="marital-status"
-                  value="legally-separated"
+                  value="without"
                   id="legally-separated"
                   required
                 />
@@ -82,7 +82,7 @@
                   type="radio"
                   class="drop-input input-marital-status"
                   name="marital-status"
-                  value="married"
+                  value="with"
                   id="married"
                   required
                 />
@@ -93,7 +93,7 @@
                   type="radio"
                   class="drop-input input-marital-status"
                   name="marital-status"
-                  value="never-married"
+                  value="without"
                   id="never-married"
                   required
                 />
@@ -104,7 +104,7 @@
                   type="radio"
                   class="drop-input input-marital-status"
                   name="marital-status"
-                  value="widow"
+                  value="without"
                   id="widow"
                   required
                 />
@@ -231,17 +231,20 @@
             </label>
 
             <select class="drop-input" id="canadian-course" required>
-              <option value="" disabled selected>Select an option</option>
-              <option value="canadian-secondary-diploma">
+              <option value="none" disabled selected>Select an option</option>
+              <option value="SecondaryDiploma">
                 Secondary (high school) or less
               </option>
-              <option value="canadian-one-two-year">
-                One or two-year diploma or certificate
+              <option value="OneYearProgram">
+                One year diploma or certificate
               </option>
-              <option value="canadian-three-year">
-                Degree, diploma, or certificate of three years or longer OR a
-                Master's, professional, or doctoral degree of at least one year
+              <option value="TwoYearProgram">
+                Two year diploma or certificate
               </option>
+              <option value="BachelorDegree">Bachelor Degree</option>
+              <option value="TwoOrMoreDegrees">Two or More Degrees</option>
+              <option value="MastersDegree">Master's Degrees</option>
+              <option value="PhD">PHD</option>
             </select>
           </div>
         </div>
@@ -780,7 +783,8 @@
               <option value="two-years">Two Years</option>
               <option value="three-years">Three Years</option>
               <option value="four-years">Four Years</option>
-              <option value="five-years">Fiver Years or More</option>
+              <option value="five-years">Fiver Years</option>
+              <option value="five-years-or-more">Fiver Years or More</option>
             </select>
           </div>
           <div class="sub-question foreign-work-experience">
@@ -925,10 +929,10 @@
             No
           </label>
         </div>
-
-        <script src="/js/operationHandler1.js"></script>
-        <script src="/js/divHandler.js"></script>
       </div>
+      <button class="btn" onclick="calculateCRSScore(formValues)">
+        Calculate CRS Score
+      </button>
     </section>
 
     <script src="/js/operationHandler.js"></script>

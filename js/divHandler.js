@@ -82,46 +82,6 @@ canadianEducationRadios.forEach((radio) => {
   });
 });
 
-// ---------------------Hide or show the language based on selected readiobutton ---------------
-
-// // Get references to the radio buttons and divs
-// const lang_radioButtons = document.querySelectorAll('input[name="language"]');
-// const lang_divs = {
-//   "test-ielts": document.getElementById("ielts-div"),
-//   "test-celpip-g": document.getElementById("celpip-g-div"),
-//   "test-tef-canada": document.getElementById("tef-canada-div"),
-//   "test-tcf-canada": document.getElementById("tcf-canada-div"),
-// };
-// // Function to hide all language divs
-// function hideAllLanguageDivs() {
-//   for (const div of Object.values(lang_divs)) {
-//     div.style.display = "none";
-//   }
-// }
-
-// // Function to show the selected language div
-// function showSelectedLanguageDiv() {
-//   hideAllLanguageDivs(); // Hide all language divs first
-
-//   // Determine which radio button is selected
-//   for (const radioButton of lang_radioButtons) {
-//     if (radioButton.checked) {
-//       const value = radioButton.value;
-//       if (lang_divs[value]) {
-//         lang_divs[value].style.display = "block";
-//       }
-//     }
-//   }
-// }
-
-// // Initial call to set the initial state
-// showSelectedLanguageDiv();
-
-// // Attach an event listener to each radio button
-// for (const radioButton of lang_radioButtons) {
-//   radioButton.addEventListener("change", showSelectedLanguageDiv);
-// }
-
 //----------------------------------hide or show the other language tests------------
 
 const ieltsDiv = document.getElementById("ol-ielts-div");
@@ -184,3 +144,35 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+/*
+const formValues = {
+  maritalStatus: "With",
+  age: 25,
+  canadianEducation: "BachelorDegree",
+  firstLanguageCLB: 9,
+  secondLanguageCLB: 7,
+  selectedCanadianExperience: "3Years",
+  spouseEducation: "BachelorDegree",
+  spouseLanguageCLB: "CLB7Or8",
+  spouseExperience: "2Years",
+  foreignWorkExperience: "1YearOr2Years",
+  selectedCertificateQualification: "With",
+  canadianCourse: "OneYear",
+  jobOfferRadio: "TEER1or2or3",
+  selectedNocTeer: "TEER3",
+  nominationCertificateValue: true,
+  siblingCitizenValue: true,
+  frenchLanguageSkills: true,
+};
+
+*/
+
+// CRS Score: 200
+// operationHandler.js:578  Core HumanAge age : 110
+// operationHandler.js:579  Core HumanAge canadian eduation: 0
+// operationHandler.js:583  Core HumanAge  work experiece: 40
+// operationHandler.js:589 Additional Points  siblin: 0
+// operationHandler.js:590 Additional Points  ps education: 0
+// operationHandler.js:594 Additional Points employement : undefined
+// operationHandler.js:598 Additional Points pnp : 0
