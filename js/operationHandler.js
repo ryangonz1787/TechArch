@@ -229,6 +229,45 @@ siblingCitizenNo.addEventListener("change", function () {
   }
 });
 
+/* get the values of spouse course */
+
+var spouseCourseSelect = document.getElementById("spouse-course");
+spouseCourseSelect.addEventListener("change", function () {
+  var selectedValue = spouseCourseSelect.value;
+  console.log(selectedValue);
+});
+
+/* Get the value of spouse work experinece */
+
+var spouseWorkExperienceSelect = document.getElementById(
+  "spouse-work-experience"
+);
+spouseWorkExperienceSelect.addEventListener("change", function () {
+  var selectedValue = spouseWorkExperienceSelect.value;
+  console.log(selectedValue);
+});
+
+/* Get the values of spouse Language */
+var spouseReadingSelect = document.getElementById("spouse-reading");
+var spouseSpeakingSelect = document.getElementById("spouse-speaking");
+var languageListeningSelect = document.getElementById("spouse-listening");
+var languageWritingSelect = document.getElementById("spouse-writing");
+spouseReadingSelect.addEventListener("change", function () {
+  console.log("Reading:", spouseReadingSelect.value);
+});
+
+spouseSpeakingSelect.addEventListener("change", function () {
+  console.log("Speaking:", spouseSpeakingSelect.value);
+});
+
+languageListeningSelect.addEventListener("change", function () {
+  console.log("Listening:", languageListeningSelect.value);
+});
+
+languageWritingSelect.addEventListener("change", function () {
+  console.log("Writing:", languageWritingSelect.value);
+});
+
 /* Calucating the CRS Score */
 
 function calculateCRSScore(formValues) {
