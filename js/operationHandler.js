@@ -39,6 +39,13 @@ ageInput.addEventListener("input", () => {
   console.log("Age:", formValues.age);
 });
 
+/* Get the value of international Education */
+
+var internationalCourse = document.getElementById("international-course");
+internationalCourse.addEventListener("change", function () {
+  formValues.internationalEducation = internationalCourse.value;
+});
+
 /* Getting the value from Canadian Education -> YES OR NO */
 const canadianEducationNo = document.getElementById("canadian-education-no");
 const canadianEducationYes = document.getElementById("canadian-education-yes");
@@ -214,7 +221,6 @@ nominationCertificateNo.addEventListener("change", function () {
 const siblingCitizenYes = document.getElementById("sibling-citizen-yes");
 const siblingCitizenNo = document.getElementById("sibling-citizen-no");
 
-// Add event listeners to detect changes in the radio buttons
 siblingCitizenYes.addEventListener("change", function () {
   if (siblingCitizenYes.checked) {
     formValues.siblingCitizenValue = siblingCitizenYes.value;
@@ -248,30 +254,49 @@ spouseWorkExperienceSelect.addEventListener("change", function () {
 });
 
 /* Get the values of spouse Language */
-var spouseReadingSelect = document.getElementById("spouse-reading");
-var spouseSpeakingSelect = document.getElementById("spouse-speaking");
-var languageListeningSelect = document.getElementById("spouse-listening");
-var languageWritingSelect = document.getElementById("spouse-writing");
+
+const spouseLanguage = {
+  speaking: "",
+  reading: "",
+  listening: "",
+  writing: "",
+};
+
+const spouseReadingSelect = document.getElementById("spouse-reading");
+const spouseSpeakingSelect = document.getElementById("spouse-speaking");
+const spouseListeningSelect = document.getElementById("spouse-listening");
+const spouseWritingSelect = document.getElementById("spouse-writing");
 spouseReadingSelect.addEventListener("change", function () {
-  console.log("Reading:", spouseReadingSelect.value);
+  spouseLanguage.reading = parseFloat(spouseReadingSelect.value);
 });
 
 spouseSpeakingSelect.addEventListener("change", function () {
-  console.log("Speaking:", spouseSpeakingSelect.value);
+  console.log(spouseSpeakingSelect.value);
+  spouseLanguage.speaking = parseFloat(spouseSpeakingSelect.value);
 });
 
-languageListeningSelect.addEventListener("change", function () {
-  console.log("Listening:", languageListeningSelect.value);
+spouseListeningSelect.addEventListener("change", function () {
+  console.log(spouseListeningSelect.value);
+  spouseLanguage.listening = parseFloat(spouseListeningSelect.value);
 });
 
-languageWritingSelect.addEventListener("change", function () {
-  console.log("Writing:", languageWritingSelect.value);
+spouseWritingSelect.addEventListener("change", function () {
+  console.log(spouseWritingSelect.value);
+  spouseLanguage.writing = parseFloat(spouseWritingSelect.value);
 });
+
+// TODO ********************************************************
+
+// const spouseLanguageScore =
+//   spouseLanguage.listening +
+//   spouseLanguage.reading +
+//   spouseLanguage.writing +
+//   spouseLanguage.speaking;
+formValues.spouseLanguageScore = 20;
 
 /* Calucating the CRS Score */
 
 function calculateCRSScore(formValues) {
-  // Define the points for each factor based on the input values
   const coreHumanCapitalPoints = {
     age:
       formValues.age <= 17
@@ -353,6 +378,42 @@ function calculateCRSScore(formValues) {
           //   ? 0
           //   : 0
           0,
+
+    internationlEducation:
+      formValues.internationalEducation === "none"
+        ? formValues.maritalStatus === "with"
+          ? 0
+          : 0
+        : formValues.internationalEducation === "SecondaryDiploma"
+        ? formValues.maritalStatus === "with"
+          ? 28
+          : 30
+        : formValues.internationalEducation === "OneYearProgram"
+        ? formValues.maritalStatus === "with"
+          ? 84
+          : 90
+        : formValues.internationalEducation === "TwoYearProgram"
+        ? formValues.maritalStatus === "with"
+          ? 91
+          : 98
+        : formValues.internationalEducation === "BachelorDegree"
+        ? formValues.maritalStatus === "with"
+          ? 112
+          : 120
+        : formValues.internationalEducation === "TwoOrMoreDegrees"
+        ? formValues.maritalStatus === "with"
+          ? 119
+          : 128
+        : formValues.internationalEducation === "MastersDegree"
+        ? formValues.maritalStatus === "with"
+          ? 126
+          : 135
+        : formValues.internationalEducation === "PhD"
+        ? formValues.maritalStatus === "with"
+          ? 140
+          : 150
+        : 0,
+
     canadianCourse:
       formValues.canadianCourse === "SecondaryDiploma"
         ? formValues.maritalStatus === "with"
@@ -459,19 +520,9 @@ function calculateCRSScore(formValues) {
     //       ? 10
     //       : 0
     //     : 0,
-    // firstLanguageCLB:
-    //   formValues.maritalStatus === "with"
-    //     ? formValues.spouseLanguageCLB === "CLB4OrLess"
-    //       ? 0
-    //       : formValues.spouseLanguageCLB === "CLB5Or6"
-    //       ? 1
-    //       : formValues.spouseLanguageCLB === "CLB7Or8"
-    //       ? 3
-    //       : formValues.spouseLanguageCLB === "CLB9OrMore"
-    //       ? 5
-    //       : 0
-    //     : 0,
-    // canadianWorkExperience:
+    firstLanguageCLB: formValues.spouseLanguageScore,
+
+    // // canadianWorkExperience:
     //   formValues.maritalStatus === "with"
     //     ? formValues.spouseExperience === "None"
     //       ? 0
@@ -582,15 +633,9 @@ phd - 150, 140
 
 
 */
-
 /*
 Spouse Factor
 ielts max -> 5 each, 20
 
 s - 7 -> 5
-
-
-
-
-
 */
