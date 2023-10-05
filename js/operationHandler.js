@@ -283,16 +283,13 @@ spouseListeningSelect.addEventListener("change", function () {
 spouseWritingSelect.addEventListener("change", function () {
   console.log(spouseWritingSelect.value);
   spouseLanguage.writing = parseFloat(spouseWritingSelect.value);
+  const spouseLanguageScore =
+    spouseLanguage.listening +
+    spouseLanguage.reading +
+    spouseLanguage.writing +
+    spouseLanguage.speaking;
+  formValues.spouseLanguageScore = spouseLanguageScore;
 });
-
-// TODO ********************************************************
-
-// const spouseLanguageScore =
-//   spouseLanguage.listening +
-//   spouseLanguage.reading +
-//   spouseLanguage.writing +
-//   spouseLanguage.speaking;
-formValues.spouseLanguageScore = 20;
 
 /* Calucating the CRS Score */
 
