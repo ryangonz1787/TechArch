@@ -66,160 +66,67 @@ canadianCourse.addEventListener("change", () => {
 });
 
 /* Getting the values of Language Test */
-const language_radioButtons = document.querySelectorAll(
-  'input[name="language"]'
-);
-
-const lang_radioButtons = document.querySelectorAll('input[name="language"]');
-const lang_divs = {
-  "test-ielts": document.getElementById("ielts-div"),
-  "test-celpip-g": document.getElementById("celpip-g-div"),
-  "test-tef-canada": document.getElementById("tef-canada-div"),
-  "test-tcf-canada": document.getElementById("tcf-canada-div"),
-};
-function hideAllLanguageDivs() {
-  for (const div of Object.values(lang_divs)) {
-    div.style.display = "none";
+function language() {
+  const readingValue = parseFloat(
+    document.getElementById("language-reading").value
+  );
+  const speakingValue = parseFloat(
+    document.getElementById("language-speaking").value
+  );
+  const listeningValue = parseFloat(
+    document.getElementById("language-listening").value
+  );
+  const writingValue = parseFloat(
+    document.getElementById("language-writing").value
+  );
+  if (
+    isNaN(readingValue) ||
+    isNaN(speakingValue) ||
+    isNaN(listeningValue) ||
+    isNaN(writingValue)
+  ) {
+    console.error("One or more values are not valid numbers.");
+    return;
   }
+
+  const avg =
+    (readingValue + speakingValue + listeningValue + writingValue) / 4;
+  formValues.englishLanguage = Math.round(avg);
 }
 
-function showSelectedLanguageDiv() {
-  hideAllLanguageDivs();
+const submitButton = document.getElementById("language-btn");
+submitButton.addEventListener("click", language);
 
-  for (const radioButton of lang_radioButtons) {
-    if (radioButton.checked) {
-      const value = radioButton.value;
-      if (lang_divs[value]) {
-        lang_divs[value].style.display = "block";
-      }
-    }
+function frenchLanguage() {
+  const readingValue = parseFloat(
+    document.getElementById("french-reading").value
+  );
+  const speakingValue = parseFloat(
+    document.getElementById("french-speaking").value
+  );
+  const listeningValue = parseFloat(
+    document.getElementById("french-listening").value
+  );
+  const writingValue = parseFloat(
+    document.getElementById("french-writing").value
+  );
+  if (
+    isNaN(readingValue) ||
+    isNaN(speakingValue) ||
+    isNaN(listeningValue) ||
+    isNaN(writingValue)
+  ) {
+    console.error("One or more values are not valid numbers.");
+    return;
   }
+  const avg =
+    (readingValue + speakingValue + listeningValue + writingValue) / 4;
+  const roundedAvg = Math.round(avg);
+  formValues.frenchLanguage = roundedAvg;
+  console.log("Rounded French Language:", roundedAvg);
 }
-
-showSelectedLanguageDiv();
-
-for (const radioButton of lang_radioButtons) {
-  radioButton.addEventListener("change", () => {
-    showSelectedLanguageDiv();
-
-    // When the radio button changes, also hide or clear the previously entered values.
-    ieltsValues = {};
-    celpipGValues = {};
-    tefCanadaValues = {};
-    tcfCanadaValues = {};
-  });
-}
-
-let ieltsValues = {};
-let celpipGValues = {};
-let tefCanadaValues = {};
-let tcfCanadaValues = {};
-
-function storeValuesInObject(div, object) {
-  const inputFields = div.querySelectorAll('input[type="text"]');
-  inputFields.forEach((inputField) => {
-    object[inputField.name] = inputField.value;
-  });
-}
-
-// Get references to the submit buttons
-const ieltsSubmitButton = document
-  .getElementById("ielts-div")
-  .querySelector(".button-submit");
-const celpipGSubmitButton = document
-  .getElementById("celpip-g-div")
-  .querySelector(".button-submit");
-const tefCanadaSubmitButton = document
-  .getElementById("tef-canada-div")
-  .querySelector(".button-submit");
-const tcfCanadaSubmitButton = document
-  .getElementById("tcf-canada-div")
-  .querySelector(".button-submit");
-
-// Add click event listeners to the submit buttons
-ieltsSubmitButton.addEventListener("click", () => {
-  storeValuesInObject(document.getElementById("ielts-div"), ieltsValues);
-  formValues.ieltsValues = { ...ieltsValues }; // Update formValues
-  console.log("IELTS Values:", ieltsValues);
-});
-
-celpipGSubmitButton.addEventListener("click", () => {
-  storeValuesInObject(document.getElementById("celpip-g-div"), celpipGValues);
-  formValues.celpipGValues = { ...celpipGValues }; // Update formValues
-  console.log("CELPIP-G Values:", celpipGValues);
-});
-
-tefCanadaSubmitButton.addEventListener("click", () => {
-  storeValuesInObject(
-    document.getElementById("tef-canada-div"),
-    tefCanadaValues
-  );
-  formValues.tefCanadaValues = { ...tefCanadaValues }; // Update formValues
-  console.log("TEF Canada Values:", tefCanadaValues);
-});
-
-tcfCanadaSubmitButton.addEventListener("click", () => {
-  storeValuesInObject(
-    document.getElementById("tcf-canada-div"),
-    tcfCanadaValues
-  );
-  formValues.tcfCanadaValues = { ...tcfCanadaValues }; // Update formValues
-  console.log("TCF Canada Values:", tcfCanadaValues);
-});
-
-/* Values for Other Language Test */
-const olIeltsSubmitButton = document
-  .getElementById("ol-ielts-div")
-  .querySelector(".button-submit");
-const olCelpipGSubmitButton = document
-  .getElementById("ol-celpip-g-div")
-  .querySelector(".button-submit");
-const olTefCanadaSubmitButton = document
-  .getElementById("ol-tef-canada-div")
-  .querySelector(".button-submit");
-const olTcfCanadaSubmitButton = document
-  .getElementById("ol-tcf-canada-div")
-  .querySelector(".button-submit");
-
-// Define objects to store values for "Other Language Results"
-let olIeltsValues = {};
-let olCelpipGValues = {};
-let olTefCanadaValues = {};
-let olTcfCanadaValues = {};
-
-// Add click event listeners to the "Submit" buttons for "Other Language Results"
-olIeltsSubmitButton.addEventListener("click", () => {
-  storeValuesInObject(document.getElementById("ol-ielts-div"), olIeltsValues);
-  formValues.olIeltsValues = { ...olIeltsValues }; // Update formValues
-  console.log("OL IELTS Values:", olIeltsValues);
-});
-
-olCelpipGSubmitButton.addEventListener("click", () => {
-  storeValuesInObject(
-    document.getElementById("ol-celpip-g-div"),
-    olCelpipGValues
-  );
-  formValues.olCelpipGValues = { ...olCelpipGValues }; // Update formValues
-  console.log("OL CELPIP-G Values:", olCelpipGValues);
-});
-
-olTefCanadaSubmitButton.addEventListener("click", () => {
-  storeValuesInObject(
-    document.getElementById("ol-tef-canada-div"),
-    olTefCanadaValues
-  );
-  formValues.olTefCanadaValues = { ...olTefCanadaValues }; // Update formValues
-  console.log("OL TEF Canada Values:", olTefCanadaValues);
-});
-
-olTcfCanadaSubmitButton.addEventListener("click", () => {
-  storeValuesInObject(
-    document.getElementById("ol-tcf-canada-div"),
-    olTcfCanadaValues
-  );
-  formValues.olTcfCanadaValues = { ...olTcfCanadaValues }; // Update formValues
-  console.log("OL TCF Canada Values:", olTcfCanadaValues);
-});
+const frenchButton = document.getElementById("french-btn");
+frenchButton.addEventListener("click", frenchLanguage);
 
 /*  Values for canadian Work Experience*/
 
@@ -465,6 +372,35 @@ function calculateCRSScore(formValues) {
         ? formValues.maritalStatus === "with"
           ? 70
           : 80
+        : 0,
+
+    CLB:
+      formValues.englishLanguage < 4
+        ? 0
+        : formValues.englishLanguage < 6
+        ? formValues.maritalStatus === "with"
+          ? 6
+          : 6
+        : formValues.englishLanguage === 6
+        ? formValues.maritalStatus === "with"
+          ? 8
+          : 9
+        : formValues.englishLanguage === 7
+        ? formValues.maritalStatus === "with"
+          ? 16
+          : 17
+        : formValues.englishLanguage === 8
+        ? formValues.maritalStatus === "with"
+          ? 22
+          : 23
+        : formValues.englishLanguage === 9
+        ? formValues.maritalStatus === "with"
+          ? 29
+          : 31
+        : formValues.englishLanguage >= 10
+        ? formValues.maritalStatus === "with"
+          ? 32
+          : 34
         : 0,
   };
 

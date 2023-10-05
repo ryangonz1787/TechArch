@@ -75,58 +75,12 @@ const canadianCourseDiv = document.querySelector(".canadian-course");
 canadianEducationRadios.forEach((radio) => {
   radio.addEventListener("change", function () {
     if (radio.value === "yes") {
-      canadianCourseDiv.style.display = "block"; // Hide the div if "Yes" is selected
+      canadianCourseDiv.style.display = "block";
     } else {
       canadianCourseDiv.style.display = "none";
     }
   });
 });
-
-//----------------------------------hide or show the other language tests------------
-
-const ieltsDiv = document.getElementById("ol-ielts-div");
-const celpipGDiv = document.getElementById("ol-celpip-g-div");
-const tefCanadaDiv = document.getElementById("ol-tef-canada-div");
-const tcfCanadaDiv = document.getElementById("ol-tcf-canada-div");
-
-// Function to show/hide language test divs based on the selected option
-function toggleLanguageTestDiv() {
-  const selectedOption = document.querySelector(
-    'input[name="other-language"]:checked'
-  );
-
-  // Hide all divs initially
-  ieltsDiv.style.display = "none";
-  celpipGDiv.style.display = "none";
-  tefCanadaDiv.style.display = "none";
-  tcfCanadaDiv.style.display = "none";
-
-  // Check if a radio button is selected before accessing its value
-  if (selectedOption) {
-    const optionValue = selectedOption.value;
-    // Show the selected div based on the user's choice
-    if (optionValue === "ielts") {
-      ieltsDiv.style.display = "block";
-    } else if (optionValue === "celpip-g") {
-      celpipGDiv.style.display = "block";
-    } else if (optionValue === "tef-canada") {
-      tefCanadaDiv.style.display = "block";
-    } else if (optionValue === "tcf-canada") {
-      tcfCanadaDiv.style.display = "block";
-    }
-  }
-}
-
-// Add an event listener to the radio buttons to trigger the function
-const radioButtons = document.querySelectorAll('input[name="other-language"]');
-radioButtons.forEach((radioButton) => {
-  radioButton.addEventListener("change", toggleLanguageTestDiv);
-});
-
-// Initial call to set the initial state
-toggleLanguageTestDiv();
-
-// Get references to the radio buttons and divs
 
 // -------------------------hide or show the job offer noc teer
 

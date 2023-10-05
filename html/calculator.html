@@ -231,7 +231,7 @@
             </label>
 
             <select class="drop-input" id="canadian-course" required>
-              <option value="none" disabled selected>Select an option</option>
+              <option value="none" selected>Select an option</option>
               <option value="SecondaryDiploma">
                 Secondary (high school) or less
               </option>
@@ -250,523 +250,192 @@
         </div>
 
         <div class="question language">
-          <label
-            >ii. Which language test did you take for your first official
-            language?</label
-          >
-          <div class="radio-buttons">
-            <label>
-              <input
-                type="radio"
-                class="drop-input"
-                name="language"
-                value="test-tcf-canada"
-                required
-              />
-              TCF Canada
-            </label>
-            <label>
-              <input
-                type="radio"
-                class="drop-input"
-                name="language"
-                value="test-tef-canada"
-                required
-              />
-              TEF Canada
-            </label>
-            <label>
-              <input
-                type="radio"
-                class="drop-input"
-                name="language"
-                value="test-ielts"
-                required
-              />
-              IELTS
-            </label>
-            <label>
-              <input
-                type="radio"
-                class="drop-input"
-                name="language"
-                value="test-celpip-g"
-                required
-              />
-              CELPIP-G
-            </label>
+          <h3>What is your level of English ability?</h3>
+          <div class="reading">
+            <label for="language-reading"> Reading </label>
+            <select class="drop-input" id="language-reading" required>
+              <option value="3">select</option>
+              <option value="3">
+                None (CLB 3 or lower / IELTS &lt; 3.5 / CELPIP &lt; 4)
+              </option>
+              <option value="4">Basic (CLB 4 / IELTS 3.5 / CELPIP 4)</option>
+              <option value="5">Limited (CLB 5 / IELTS 4/ CELPIP 4)</option>
+              <option value="6">Fair (CLB 6 / IELTS 5 / CELPIP 7)</option>
+              <option value="7">Good (CLB 7 / IELTS 6 / CELPIP 7)</option>
+              <option value="8">Very Good (CLB 8 / IELTS 6.5/ CELPIP 8)</option>
+              <option value="9">Advanced (CLB 9 / IELTS 7 / CELPIP 9)</option>
+              <option value="10">
+                Fluent/Natice (CLB 10 or higher / IELTS &gt; 7.5 / CELPIP &gt;
+                9)
+              </option>
+            </select>
           </div>
-
-          <!-- Divs for each language test -->
-          <div id="ielts-div" style="display: block">
-            <p>IELTS</p>
-            <label for="ielts-speaking">Speaking:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="ielts-speaking"
-                name="ielts-speaking"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-
-            <label for="ielts-listening">Listening:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="ielts-listening"
-                name="ielts-listening"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-
-            <label for="ielts-reading">Reading:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="ielts-reading"
-                name="ielts-reading"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-
-            <label for="ielts-writing">Writing:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="ielts-writing"
-                name="ielts-writing"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-            <button class="button-submit" id="ielts-div">Submit</button>
+          <div class="speaking">
+            <label for="language-speaking"> Reading </label>
+            <select class="drop-input" id="language-speaking" required>
+              <option value="3">select</option>
+              <option value="3">
+                None (CLB 3 or lower / IELTS &lt; 4 / CELPIP &lt; 4)
+              </option>
+              <option value="4">Basic (CLB 4 / IELTS 4 / CELPIP 4)</option>
+              <option value="5">Limited (CLB 5 / IELTS 5 / CELPIP 5)</option>
+              <option value="6">Fair (CLB 6 / IELTS 5.5 / CELPIP 6)</option>
+              <option value="7">Good (CLB 7 / IELTS 6 / CELPIP 7)</option>
+              <option value="8">
+                Very Good (CLB 8 / IELTS 6.5 / CELPIP 8)
+              </option>
+              <option value="9">Advanced (CLB 9 / IELTS 7 / CELPIP 9)</option>
+              <option value="10">
+                Fluent/Natice (CLB 10 or higher / IELTS &gt; 7 / CELPIP &gt; 9)
+              </option>
+            </select>
           </div>
-
-          <div id="celpip-g-div" style="display: block">
-            <p>CELPIP</p>
-            <label for="celpip-speaking">Speaking:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="celpip-speaking"
-                name="celpip-speaking"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-
-            <label for="celpip-listening">Listening:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="celpip-listening"
-                name="celpip-listening"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-
-            <label for="celpip-reading">Reading:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="celpip-reading"
-                name="celpip-reading"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-
-            <label for="celpip-writing">Writing:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="celpip-writing"
-                name="celpip-writing"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-            <button class="button-submit" id="celpip-g-div">Submit</button>
+          <div class="listening">
+            <label for="language-listening"> Listening </label>
+            <select class="drop-input" id="language-listening" required>
+              <option value="3">select</option>
+              <option value="3">
+                None (CLB 3 or lower / IELTS &lt; 4.5 / CELPIP &lt; 4)
+              </option>
+              <option value="4">Basic (CLB 4 / IELTS 4.5 / CELPIP 4)</option>
+              <option value="5">Limited (CLB 5 / IELTS 5/ CELPIP 5)</option>
+              <option value="6">Fair (CLB 6 / IELTS 5.5 / CELPIP 6)</option>
+              <option value="7">Good (CLB 7 / IELTS 6 / CELPIP 7)</option>
+              <option value="8">Very Good (CLB 8 / IELTS 7.5/ CELPIP 8)</option>
+              <option value="9">Advanced (CLB 9 / IELTS 8 / CELPIP 9)</option>
+              <option value="10">
+                Fluent/Natice (CLB 10 or higher / IELTS &gt; 8.5 / CELPIP &gt;
+                9)
+              </option>
+            </select>
           </div>
-
-          <div id="tef-canada-div" style="display: block">
-            <p>TEF Canada</p>
-            <label for="tef-speaking">Speaking:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="tef-speaking"
-                name="tef-speaking"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-
-            <label for="tef-listening">Listening:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="tef-listening"
-                name="tef-listening"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-
-            <label for="tef-reading">Reading:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="tef-reading"
-                name="tef-reading"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-
-            <label for="tef-writing">Writing:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="tef-writing"
-                name="tef-writing"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-            <button class="button-submit" id="tef-canada-div">Submit</button>
+          <div class="writing">
+            <label for="language-writing"> Reading </label>
+            <select class="drop-input" id="language-writing" required>
+              <option value="3">select</option>
+              <option value="3">
+                None (CLB 3 or lower / IELTS &lt; 4 / CELPIP &lt; 4)
+              </option>
+              <option value="4">Basic (CLB 4 / IELTS 4 / CELPIP 4)</option>
+              <option value="5">Limited (CLB 5 / IELTS 5 / CELPIP 5)</option>
+              <option value="6">Fair (CLB 6 / IELTS 5.5 / CELPIP 6)</option>
+              <option value="7">Good (CLB 7 / IELTS 6 / CELPIP 7)</option>
+              <option value="8">Very Good (CLB 8 / IELTS 6.5/ CELPIP 8)</option>
+              <option value="9">Advanced (CLB 9 / IELTS 7 / CELPIP 9)</option>
+              <option value="10">
+                Fluent/Natice (CLB 10 or higher / IELTS &gt; 7 / CELPIP &gt; 9)
+              </option>
+            </select>
           </div>
-
-          <div id="tcf-canada-div" style="display: block">
-            <p>TCF Canada</p>
-            <label for="tcf-speaking">Speaking:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                id="tcf-speaking"
-                class="input-text"
-                name="tcf-speaking"
-                placeholder="Enter Score"
-                required
-              />
-            </div>
-
-            <label for="tcf-listening">Listening:</label>
-            <div class="text-inputs">
-              <input
-                id="tcf-listening"
-                type="text"
-                class="input-text"
-                name="tcf-listening"
-                placeholder="Enter Score"
-                required
-              />
-            </div>
-            <label for="tcf-reading">Reading:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                id="tcf-reading"
-                class="input-text"
-                name="tcf-reading"
-                placeholder="Enter Score"
-                required
-              />
-            </div>
-
-            <label for="tcf-writing">Writing:</label>
-            <div class="text-inputs">
-              <input
-                id="tcf-writing"
-                type="text"
-                class="input-text"
-                name="tcf-writing"
-                placeholder="Enter Score"
-                required
-              />
-            </div>
-            <button class="button-submit" id="tcf-canada-div">Submit</button>
-          </div>
+          <button class="btn" id="language-btn">Submit</button>
         </div>
-
-        <div class="question other-language">
-          <label>Do you have other language results?</label>
-          <div class="radio-buttons">
-            <label>
-              <input
-                type="radio"
-                class="drop-input"
-                name="other-language"
-                value="not applicable"
-                required
-              />
-              No Applicable
-            </label>
-            <label>
-              <input
-                type="radio"
-                class="drop-input"
-                name="other-language"
-                value="tcf-canada"
-                required
-              />
-              TCF Canada
-            </label>
-            <label>
-              <input
-                type="radio"
-                class="drop-input"
-                name="other-language"
-                value="tef-canada"
-                required
-              />
-              TEF Canada
-            </label>
-            <label>
-              <input
-                type="radio"
-                class="drop-input"
-                name="other-language"
-                value="ielts"
-                required
-              />
-              IELTS
-            </label>
-            <label>
-              <input
-                type="radio"
-                class="drop-input"
-                name="other-language"
-                value="celpip-g"
-                required
-              />
-              CELPIP-G
-            </label>
+        <div class="question french-language">
+          <h3>What is your level of French ability?</h3>
+          <div class="reading">
+            <label for="french-reading"> Reading </label>
+            <select class="drop-input" id="french-reading" required>
+              <option value="3">select</option>
+              <option value="3">
+                None (CLB 3 or lower / TEF &gt; 121 / TCF &lt; 342)
+              </option>
+              <option value="4">
+                Basic (CLB 4 / TEF 124 - 150 / TCF 342-374)
+              </option>
+              <option value="5">
+                Limited (CLB 5 / TEF 151-180 / TCF 375-405 )
+              </option>
+              <option value="6">
+                Fair (CLB 6/ TEF 181-206 / TCF 406-452 )
+              </option>
+              <option value="7">
+                Good (CLB 7 / TEF 207-232 / TCF 453-498 )
+              </option>
+              <option value="8">
+                Very Good (CLB 8 / TEF 233-247 / TCF 499-523 )
+              </option>
+              <option value="9">
+                Advanced (CLB 9 / TEF 248-262 / TCF 524-548 )
+              </option>
+              <option value="10">
+                Fluent/Natice (CLB 10 or higher / TEF &gt; 262 / TCF &gt; 9)
+              </option>
+            </select>
           </div>
-
-          <div id="ol-ielts-div" style="display: none">
-            <p>IELTS</p>
-            <label for="ol-ielts-speaking">Speaking:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="ol-ielts-speaking"
-                name="ol-ielts-speaking"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-
-            <label for="ol-ielts-listening">Listening:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="ol-ielts-listening"
-                name="ol-ielts-listening"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-
-            <label for="ol-ielts-reading">Reading:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="ol-ielts-reading"
-                name="ol-ielts-reading"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-
-            <label for="ol-ielts-writing">Writing:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="ol-ielts-writing"
-                name="ol-ielts-writing"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-            <button class="button-submit" id="ol-ielts-div">Submit</button>
+          <div class="speaking">
+            <label for="french-speaking"> Reading </label>
+            <select class="drop-input" id="french-speaking" required>
+              <option value="3">select</option>
+              <option value="3">
+                None (CLB 3 or lower / TEF &lt; 181 / TCF &lt; 4 )
+              </option>
+              <option value="4">Basic (CLB 4 / TEF 181 - 225 / TCF 4-5)</option>
+              <option value="5">Limited (CLB 5 / TEF 226-270 / TCF 6 )</option>
+              <option value="6">Fair (CLB 6/ TEF 271-309 / TCF 7-9 )</option>
+              <option value="7">Good (CLB 7 / TEF 310-348 / TCF 10-11 )</option>
+              <option value="8">
+                Very Good (CLB 8 / TEF 349-370 / TCF 12-13 )
+              </option>
+              <option value="9">
+                Advanced (CLB 9 / TEF 371-392 / TCF 14-15 )
+              </option>
+              <option value="10">
+                Fluent/Natice (CLB 10 or higher / TEF &gt; 392 / TCF &gt; 15)
+              </option>
+            </select>
           </div>
-
-          <div id="ol-celpip-g-div" style="display: none">
-            <p>CELPIP</p>
-            <label for="ol-celpip-speaking">Speaking:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="ol-celpip-speaking"
-                name="ol-celpip-speaking"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-
-            <label for="ol-celpip-listening">Listening:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="ol-celpip-listening"
-                name="ol-celpip-listening"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-
-            <label for="ol-celpip-reading">Reading:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="ol-celpip-reading"
-                name="ol-celpip-reading"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-
-            <label for="ol-celpip-writing">Writing:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="ol-celpip-writing"
-                name="ol-celpip-writing"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-            <button class="button-submit" id="ol-celpip-g-div">Submit</button>
+          <div class="listening">
+            <label for="french-listening"> Listening </label>
+            <select class="drop-input" id="french-listening" required>
+              <option value="3">select</option>
+              <option value="3">
+                None (CLB 3 or lower / TEF &gt; 145 / TCF &lt; 331)
+              </option>
+              <option value="4">
+                Basic (CLB 4 / TEF 145 - 180 / TCF 331-368)
+              </option>
+              <option value="5">
+                Limited (CLB 5 / TEF 181-216 / TCF 369-397 )
+              </option>
+              <option value="6">
+                Fair (CLB 6/ TEF 217-248 / TCF 398-457 )
+              </option>
+              <option value="7">
+                Good (CLB 7 / TEF 249-279 / TCF 458-502 )
+              </option>
+              <option value="8">
+                Very Good (CLB 8 / TEF 280-297 / TCF 503-522 )
+              </option>
+              <option value="9">
+                Advanced (CLB 9 / TEF 298-315 / TCF 523-548 )
+              </option>
+              <option value="10">
+                Fluent/Natice (CLB 10 or higher / TEF &gt; 315 / TCF &gt; 548)
+              </option>
+            </select>
           </div>
-
-          <div id="ol-tef-canada-div" style="display: none">
-            <p>TEF Canada</p>
-            <label for="ol-tef-speaking">Speaking:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="ol-tef-speaking"
-                name="ol-tef-speaking"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-
-            <label for="ol-tef-listening">Listening:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="ol-tef-listening"
-                name="ol-tef-listening"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-
-            <label for="ol-tef-reading">Reading:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="ol-tef-reading"
-                name="ol-tef-reading"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-
-            <label for="ol-tef-writing">Writing:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                class="drop-input"
-                id="ol-tef-writing"
-                name="ol-tef-writing"
-                placeholder="Enter score"
-                required
-              />
-            </div>
-            <button class="button-submit" id="ol-tef-canada-div">Submit</button>
+          <div class="writing">
+            <label for="french-writing"> Reading </label>
+            <select class="drop-input" id="french-writing" required>
+              <option value="">select</option>
+              <option value="">
+                None (CLB 3 or lower / TEF &lt; 181 / TCF &lt; 4 )
+              </option>
+              <option value="4">Basic (CLB 4 / TEF 181 - 225 / TCF 4-5)</option>
+              <option value="5">Limited (CLB 5 / TEF 226-270 / TCF 6 )</option>
+              <option value="6">Fair (CLB 6/ TEF 271-309 / TCF 7-9 )</option>
+              <option value="7">Good (CLB 7 / TEF 310-348 / TCF 10-11 )</option>
+              <option value="8">
+                Very Good (CLB 8 / TEF 349-370 / TCF 12-13 )
+              </option>
+              <option value="9">
+                Advanced (CLB 9 / TEF 371-392 / TCF 14-15 )
+              </option>
+              <option value="10">
+                Fluent/Natice (CLB 10 or higher / TEF &gt; 392 / TCF &gt; 15)
+              </option>
+            </select>
           </div>
-
-          <div id="ol-tcf-canada-div" style="display: none">
-            <p>TCF Canada</p>
-            <label for="ol-tcf-speaking">Speaking:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                id="ol-tcf-speaking"
-                class="input-text"
-                name="ol-tcf-speaking"
-                placeholder="Enter Score"
-                required
-              />
-            </div>
-
-            <label for="ol-tcf-listening">Listening:</label>
-            <div class="text-inputs">
-              <input
-                id="ol-tcf-listening"
-                type="text"
-                class="input-text"
-                name="ol-tcf-listening"
-                placeholder="Enter Score"
-                required
-              />
-            </div>
-            <label for="ol-tcf-reading">Reading:</label>
-            <div class="text-inputs">
-              <input
-                type="text"
-                id="ol-tcf-reading"
-                class="input-text"
-                name="ol-tcf-reading"
-                placeholder="Enter Score"
-                required
-              />
-            </div>
-
-            <label for="ol-tcf-writing">Writing:</label>
-            <div class="text-inputs">
-              <input
-                id="ol-tcf-writing"
-                type="text"
-                class="input-text"
-                name="ol-tcf-writing"
-                placeholder="Enter Score"
-                required
-              />
-            </div>
-            <button class="button-submit" id="ol-tcf-canada-div">Submit</button>
-          </div>
+          <button class="btn" id="french-btn">Submit</button>
         </div>
         <div class="question-work-experience">
           <label for="work-experience">6. work Experience</label>
@@ -794,7 +463,7 @@
             </label>
 
             <select class="drop-input" id="foreign-work-experience" required>
-              <option value="" disabled selected>Select an option</option>
+              <option value="" selected>Select an option</option>
               <option value="none">None or Less than a year</option>
               <option value="one-year">One Year</option>
               <option value="two-years">Two Years</option>
@@ -810,7 +479,7 @@
           </label>
 
           <select class="drop-input" id="certificate-qualification" required>
-            <option value="" disabled selected>Select an option</option>
+            <option value="" selected>Select an option</option>
             <option value="no">No</option>
             <option value="yes">Yes</option>
           </select>
