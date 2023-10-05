@@ -405,52 +405,52 @@ function calculateCRSScore(formValues) {
   };
 
   const spouseFactorsPoints = {
-    education:
-      formValues.maritalStatus === "with"
-        ? formValues.spouseEducation === "SecondaryDiploma"
-          ? 2
-          : formValues.spouseEducation === "OneYearProgram"
-          ? 6
-          : formValues.spouseEducation === "TwoYearProgram"
-          ? 7
-          : formValues.spouseEducation === "BachelorDegree"
-          ? 8
-          : formValues.spouseEducation === "TwoOrMoreDegrees"
-          ? 9
-          : formValues.spouseEducation === "MastersDegree"
-          ? 10
-          : formValues.spouseEducation === "PhD"
-          ? 10
-          : 0
-        : 0,
-    firstLanguageCLB:
-      formValues.maritalStatus === "with"
-        ? formValues.spouseLanguageCLB === "CLB4OrLess"
-          ? 0
-          : formValues.spouseLanguageCLB === "CLB5Or6"
-          ? 1
-          : formValues.spouseLanguageCLB === "CLB7Or8"
-          ? 3
-          : formValues.spouseLanguageCLB === "CLB9OrMore"
-          ? 5
-          : 0
-        : 0,
-    canadianWorkExperience:
-      formValues.maritalStatus === "with"
-        ? formValues.spouseExperience === "None"
-          ? 0
-          : formValues.spouseExperience === "one-year"
-          ? 5
-          : formValues.spouseExperience === "two-years"
-          ? 7
-          : formValues.spouseExperience === "three-years"
-          ? 8
-          : formValues.spouseExperience === "four-years"
-          ? 9
-          : formValues.spouseExperience === "five-years-or-more"
-          ? 10
-          : 0
-        : 0,
+    // education:
+    //   formValues.maritalStatus === "with"
+    //     ? formValues.spouseEducation === "SecondaryDiploma"
+    //       ? 2
+    //       : formValues.spouseEducation === "OneYearProgram"
+    //       ? 6
+    //       : formValues.spouseEducation === "TwoYearProgram"
+    //       ? 7
+    //       : formValues.spouseEducation === "BachelorDegree"
+    //       ? 8
+    //       : formValues.spouseEducation === "TwoOrMoreDegrees"
+    //       ? 9
+    //       : formValues.spouseEducation === "MastersDegree"
+    //       ? 10
+    //       : formValues.spouseEducation === "PhD"
+    //       ? 10
+    //       : 0
+    //     : 0,
+    // firstLanguageCLB:
+    //   formValues.maritalStatus === "with"
+    //     ? formValues.spouseLanguageCLB === "CLB4OrLess"
+    //       ? 0
+    //       : formValues.spouseLanguageCLB === "CLB5Or6"
+    //       ? 1
+    //       : formValues.spouseLanguageCLB === "CLB7Or8"
+    //       ? 3
+    //       : formValues.spouseLanguageCLB === "CLB9OrMore"
+    //       ? 5
+    //       : 0
+    //     : 0,
+    // canadianWorkExperience:
+    //   formValues.maritalStatus === "with"
+    //     ? formValues.spouseExperience === "None"
+    //       ? 0
+    //       : formValues.spouseExperience === "one-year"
+    //       ? 5
+    //       : formValues.spouseExperience === "two-years"
+    //       ? 7
+    //       : formValues.spouseExperience === "three-years"
+    //       ? 8
+    //       : formValues.spouseExperience === "four-years"
+    //       ? 9
+    //       : formValues.spouseExperience === "five-years-or-more"
+    //       ? 10
+    //       : 0
+    //     : 0,
   };
 
   const skillTransferabilityPoints = {
@@ -463,7 +463,7 @@ function calculateCRSScore(formValues) {
 
   const additionalPoints = {
     siblingInCanada: formValues.siblingCitizenValue === "yes" ? 15 : 0,
-    frenchLanguageSkills: formValues.frenchLanguageSkills === "yes" ? 50 : 0,
+    // frenchLanguageSkills: formValues.frenchLanguageSkills === "yes" ? 50 : 0,
     postSecondaryEducationInCanada:
       formValues.canadianCourse === "canadian-three-years-or-more"
         ? 30
