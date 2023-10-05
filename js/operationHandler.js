@@ -89,9 +89,8 @@ function language() {
     return;
   }
 
-  const avg =
-    (readingValue + speakingValue + listeningValue + writingValue) / 4;
-  formValues.englishLanguage = Math.round(avg);
+  const add = readingValue + speakingValue + listeningValue + writingValue;
+  formValues.englishLanguage = add;
 }
 
 const submitButton = document.getElementById("language-btn");
@@ -119,11 +118,9 @@ function frenchLanguage() {
     console.error("One or more values are not valid numbers.");
     return;
   }
-  const avg =
-    (readingValue + speakingValue + listeningValue + writingValue) / 4;
-  const roundedAvg = Math.round(avg);
-  formValues.frenchLanguage = roundedAvg;
-  console.log("Rounded French Language:", roundedAvg);
+  const add = readingValue + speakingValue + listeningValue + writingValue;
+  formValues.frenchLanguage = add;
+  console.log("Rounded French Language:", add);
 }
 const frenchButton = document.getElementById("french-btn");
 frenchButton.addEventListener("click", frenchLanguage);
@@ -374,34 +371,34 @@ function calculateCRSScore(formValues) {
           : 80
         : 0,
 
-    CLB:
-      formValues.englishLanguage < 4
-        ? 0
-        : formValues.englishLanguage < 6
-        ? formValues.maritalStatus === "with"
-          ? 6
-          : 6
-        : formValues.englishLanguage === 6
-        ? formValues.maritalStatus === "with"
-          ? 8
-          : 9
-        : formValues.englishLanguage === 7
-        ? formValues.maritalStatus === "with"
-          ? 16
-          : 17
-        : formValues.englishLanguage === 8
-        ? formValues.maritalStatus === "with"
-          ? 22
-          : 23
-        : formValues.englishLanguage === 9
-        ? formValues.maritalStatus === "with"
-          ? 29
-          : 31
-        : formValues.englishLanguage >= 10
-        ? formValues.maritalStatus === "with"
-          ? 32
-          : 34
-        : 0,
+    CLB: formValues.englishLanguage,
+    // < 4
+    //   ? 0
+    //   : formValues.englishLanguage < 6
+    //   ? formValues.maritalStatus === "with"
+    //     ? 6
+    //     : 6
+    //   : formValues.englishLanguage === 6
+    //   ? formValues.maritalStatus === "with"
+    //     ? 8
+    //     : 9
+    //   : formValues.englishLanguage === 7
+    //   ? formValues.maritalStatus === "with"
+    //     ? 16
+    //     : 17
+    //   : formValues.englishLanguage === 8
+    //   ? formValues.maritalStatus === "with"
+    //     ? 22
+    //     : 23
+    //   : formValues.englishLanguage === 9
+    //   ? formValues.maritalStatus === "with"
+    //     ? 29
+    //     : 31
+    //   : formValues.englishLanguage >= 10
+    //   ? formValues.maritalStatus === "with"
+    //     ? 32
+    //     : 34
+    //   : 0,
   };
 
   const spouseFactorsPoints = {
@@ -533,3 +530,28 @@ function calculateCRSScore(formValues) {
 
 // const crsScore = calculateCRSScore(formValues);
 // console.log("CRS Score: ", crsScore);
+
+/*
+none or less than secondary - 0
+secondary - 30, 28
+One Year - 90, 84
+2 - 98, 91
+bachelor - 120, 112
+two or more - 128, 119
+master - 135 , 126
+phd - 150, 140
+
+
+*/
+
+/*
+Spouse Factor
+ielts max -> 5 each, 20
+
+s - 7 -> 5
+
+
+
+
+
+*/

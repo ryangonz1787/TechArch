@@ -194,6 +194,34 @@
           <input type="number" id="age" required /><br />
         </div>
         <div class="question education">
+          <div class="sub-question international-course">
+            <label for="international-course">
+              4a. Enter the highest level of education for which you: earned a
+              Canadian degree, diploma or certificate or had an Educational
+              Credential Assessment (ECA) if you did your study outside Canada.
+              (ECAs must be from an approved agency, in the last five years)
+            </label>
+
+            <select class="drop-input" id="international-course" required>
+              <option value="none" selected>Select an option</option>
+              <option value="SecondaryDiploma">
+                Secondary (high school) or less
+              </option>
+              <option value="OneYearProgram">
+                One year program at university, college, school or technical
+                school or other institute
+              </option>
+              <option value="TwoYearProgram">
+                Two year program at university, college, school or technical
+                school or other institute
+              </option>
+              <option value="BachelorDegree">Bachelor Degree</option>
+              <option value="TwoOrMoreDegrees">Two or More Degrees</option>
+              <option value="MastersDegree">Master's Degrees</option>
+              <option value="PhD">PHD</option>
+            </select>
+          </div>
+
           <!-- sub class for education level -->
           <div class="sub-question canadian-education-class">
             <label>
@@ -254,17 +282,23 @@
           <div class="reading">
             <label for="language-reading"> Reading </label>
             <select class="drop-input" id="language-reading" required>
-              <option value="3">select</option>
-              <option value="3">
+              <option value="0">select</option>
+              <option value="0">
                 None (CLB 3 or lower / IELTS &lt; 3.5 / CELPIP &lt; 4)
               </option>
-              <option value="4">Basic (CLB 4 / IELTS 3.5 / CELPIP 4)</option>
-              <option value="5">Limited (CLB 5 / IELTS 4/ CELPIP 4)</option>
-              <option value="6">Fair (CLB 6 / IELTS 5 / CELPIP 7)</option>
-              <option value="7">Good (CLB 7 / IELTS 6 / CELPIP 7)</option>
-              <option value="8">Very Good (CLB 8 / IELTS 6.5/ CELPIP 8)</option>
-              <option value="9">Advanced (CLB 9 / IELTS 7 / CELPIP 9)</option>
-              <option value="10">
+              <option value="6">Basic (CLB 4 / IELTS 3.5 / CELPIP 4)</option>
+              <option value="6">
+                Limited (CLB 5 / IELTS 4 - 4.5/ CELPIP 4)
+              </option>
+              <option value="9">Fair (CLB 6 / IELTS 5-5.5 / CELPIP 7)</option>
+              <option value="17">Good (CLB 7 / IELTS 6 / CELPIP 7)</option>
+              <option value="23">
+                Very Good (CLB 8 / IELTS 6.5/ CELPIP 8)
+              </option>
+              <option value="31">
+                Advanced (CLB 9 / IELTS 7 - 7.5 / CELPIP 9)
+              </option>
+              <option value="34">
                 Fluent/Natice (CLB 10 or higher / IELTS &gt; 7.5 / CELPIP &gt;
                 9)
               </option>
@@ -273,37 +307,40 @@
           <div class="speaking">
             <label for="language-speaking"> Speaking</label>
             <select class="drop-input" id="language-speaking" required>
-              <option value="3">select</option>
-              <option value="3">
+              <option value="0">select</option>
+              <option value="0">
                 None (CLB 3 or lower / IELTS &lt; 4 / CELPIP &lt; 4)
               </option>
-              <option value="4">Basic (CLB 4 / IELTS 4 / CELPIP 4)</option>
-              <option value="5">Limited (CLB 5 / IELTS 5 / CELPIP 5)</option>
-              <option value="6">Fair (CLB 6 / IELTS 5.5 / CELPIP 6)</option>
-              <option value="7">Good (CLB 7 / IELTS 6 / CELPIP 7)</option>
-              <option value="8">
-                Very Good (CLB 8 / IELTS 6.5 / CELPIP 8)
+              <option value="6">Basic (CLB 4 / IELTS 4 - 5 / CELPIP 4)</option>
+              <option value="9">Limited (CLB 5 / IELTS 5.5 / CELPIP 5)</option>
+              <option value="17">Fair (CLB 6 / IELTS 5 / CELPIP 6)</option>
+              <option value="23">Good (CLB 7 / IELTS 6.5 / CELPIP 7)</option>
+              <option value="31">Very Good (CLB 8 / IELTS 7 / CELPIP 8)</option>
+              <option value="32">
+                Advanced (CLB 9 / IELTS 7.5 / CELPIP 9)
               </option>
-              <option value="9">Advanced (CLB 9 / IELTS 7 / CELPIP 9)</option>
-              <option value="10">
-                Fluent/Natice (CLB 10 or higher / IELTS &gt; 7 / CELPIP &gt; 9)
+              <option value="34">
+                Fluent/Natice (CLB 10 or higher / IELTS &gt; 7.5 / CELPIP &gt;
+                9)
               </option>
             </select>
           </div>
           <div class="listening">
             <label for="language-listening"> Listening </label>
             <select class="drop-input" id="language-listening" required>
-              <option value="3">select</option>
-              <option value="3">
+              <option value="0">select</option>
+              <option value="0">
                 None (CLB 3 or lower / IELTS &lt; 4.5 / CELPIP &lt; 4)
               </option>
-              <option value="4">Basic (CLB 4 / IELTS 4.5 / CELPIP 4)</option>
-              <option value="5">Limited (CLB 5 / IELTS 5/ CELPIP 5)</option>
-              <option value="6">Fair (CLB 6 / IELTS 5.5 / CELPIP 6)</option>
-              <option value="7">Good (CLB 7 / IELTS 6 / CELPIP 7)</option>
-              <option value="8">Very Good (CLB 8 / IELTS 7.5/ CELPIP 8)</option>
-              <option value="9">Advanced (CLB 9 / IELTS 8 / CELPIP 9)</option>
-              <option value="10">
+              <option value="6">Basic (CLB 4 / IELTS 4.5 / CELPIP 4)</option>
+              <option value="6">Limited (CLB 5 / IELTS 5/ CELPIP 5)</option>
+              <option value="9">Fair (CLB 6 / IELTS 5.5 / CELPIP 6)</option>
+              <option value="17">Good (CLB 7 / IELTS 6 - 7 / CELPIP 7)</option>
+              <option value="23">
+                Very Good (CLB 8 / IELTS 7.5/ CELPIP 8)
+              </option>
+              <option value="31">Advanced (CLB 9 / IELTS 8 / CELPIP 9)</option>
+              <option value="34">
                 Fluent/Natice (CLB 10 or higher / IELTS &gt; 8.5 / CELPIP &gt;
                 9)
               </option>
@@ -312,17 +349,21 @@
           <div class="writing">
             <label for="language-writing"> Writing </label>
             <select class="drop-input" id="language-writing" required>
-              <option value="3">select</option>
-              <option value="3">
+              <option value="0">select</option>
+              <option value="0">
                 None (CLB 3 or lower / IELTS &lt; 4 / CELPIP &lt; 4)
               </option>
-              <option value="4">Basic (CLB 4 / IELTS 4 / CELPIP 4)</option>
-              <option value="5">Limited (CLB 5 / IELTS 5 / CELPIP 5)</option>
-              <option value="6">Fair (CLB 6 / IELTS 5.5 / CELPIP 6)</option>
-              <option value="7">Good (CLB 7 / IELTS 6 / CELPIP 7)</option>
-              <option value="8">Very Good (CLB 8 / IELTS 6.5/ CELPIP 8)</option>
-              <option value="9">Advanced (CLB 9 / IELTS 7 / CELPIP 9)</option>
-              <option value="10">
+              <option value="6">
+                Basic (CLB 4 / IELTS 4 - 4.5 / CELPIP 4)
+              </option>
+              <option value="6">Limited (CLB 5 / IELTS 5 / CELPIP 5)</option>
+              <option value="9">Fair (CLB 6 / IELTS 5.5 / CELPIP 6)</option>
+              <option value="17">Good (CLB 7 / IELTS 6 / CELPIP 7)</option>
+              <option value="23">
+                Very Good (CLB 8 / IELTS 6.5/ CELPIP 8)
+              </option>
+              <option value="31">Advanced (CLB 9 / IELTS 7 / CELPIP 9)</option>
+              <option value="34">
                 Fluent/Natice (CLB 10 or higher / IELTS &gt; 7 / CELPIP &gt; 9)
               </option>
             </select>
@@ -597,6 +638,139 @@
             />
             No
           </label>
+        </div>
+
+        <div class="question spouse-course">
+          <label for="spouse-course">
+            11. What is the highest level of education for which your spouse or
+            common-law partner's has: earned a Canadian degree, diploma or
+            certificate; or had an Educational Credential Assessment (ECA)?
+            (ECAs must be from an approved agency, in the last five years)
+          </label>
+
+          <select class="drop-input" id="spouse-course" required>
+            <option value="none" selected>Select an option</option>
+            <option value="SecondaryDiploma">
+              Secondary (high school) or less
+            </option>
+            <option value="OneYearProgram">
+              One year program at university, college, school or technical
+              school or other institute
+            </option>
+            <option value="TwoYearProgram">
+              Two year program at university, college, school or technical
+              school or other institute
+            </option>
+            <option value="BachelorDegree">Bachelor Degree</option>
+            <option value="TwoOrMoreDegrees">Two or More Degrees</option>
+            <option value="MastersDegree">Master's Degrees</option>
+            <option value="PhD">PHD</option>
+          </select>
+        </div>
+
+        <div class="question spouse-work-experience">
+          <label for="spouse-work-experience">
+            12. In the last ten years, how many years of skilled work experience
+            in Canada does your spouse/common-law partner have?
+          </label>
+          <p>
+            It must have been paid, full-time (or an equal amount in part-time),
+            and in one or more NOC TEER category 0, 1, 2, or 3 jobs.
+          </p>
+
+          <select class="drop-input" id="spouse-work-experience" required>
+            <option value="none" selected>None or less than a year</option>
+            <option value="one-year">One Year</option>
+            <option value="two-years">Two Years</option>
+            <option value="three-years">Three Years</option>
+            <option value="four-years">Four Years</option>
+            <option value="five-years">Five Years or More</option>
+          </select>
+        </div>
+
+        <div class="question spouse-language">
+          <h3>What is your level of English ability?</h3>
+          <div class="reading">
+            <label for="spouse-reading"> Reading </label>
+            <select class="drop-input" id="spouse-reading" required>
+              <option value="0">select</option>
+              <option value="0">
+                None (CLB 3 or lower / IELTS &lt; 3.5 / CELPIP &lt; 4)
+              </option>
+              <option value="0">Basic (CLB 4 / IELTS 3.5 / CELPIP 4)</option>
+              <option value="1">
+                Limited (CLB 5 / IELTS 4 - 4.5/ CELPIP 4)
+              </option>
+              <option value="1">Fair (CLB 6 / IELTS 5-5.5 / CELPIP 7)</option>
+              <option value="3">Good (CLB 7 / IELTS 6 / CELPIP 7)</option>
+              <option value="3">Very Good (CLB 8 / IELTS 6.5/ CELPIP 8)</option>
+              <option value="5">
+                Advanced (CLB 9 / IELTS 7 - 7.5 / CELPIP 9)
+              </option>
+              <option value="5">
+                Fluent/Natice (CLB 10 or higher / IELTS &gt; 7.5 / CELPIP &gt;
+                9)
+              </option>
+            </select>
+          </div>
+          <div class="speaking">
+            <label for="spouse-speaking"> Speaking</label>
+            <select class="drop-input" id="spouse-speaking" required>
+              <option value="0">select</option>
+              <option value="0">
+                None (CLB 3 or lower / IELTS &lt; 4 / CELPIP &lt; 4)
+              </option>
+              <option value="1">Basic (CLB 4 / IELTS 4 - 5 / CELPIP 4)</option>
+              <option value="1">Limited (CLB 5 / IELTS 5.5 / CELPIP 5)</option>
+              <option value="2">Fair (CLB 6 / IELTS 6 / CELPIP 6)</option>
+              <option value="3">Good (CLB 7 / IELTS 6.5 / CELPIP 7)</option>
+              <option value="5">Very Good (CLB 8 / IELTS 7 / CELPIP 8)</option>
+              <option value="5">Advanced (CLB 9 / IELTS 7.5 / CELPIP 9)</option>
+              <option value="5">
+                Fluent/Natice (CLB 10 or higher / IELTS &gt; 7.5 / CELPIP &gt;
+                9)
+              </option>
+            </select>
+          </div>
+          <div class="listening">
+            <label for="language-listening"> Listening </label>
+            <select class="drop-input" id="language-listening" required>
+              <option value="0">select</option>
+              <option value="0">
+                None (CLB 3 or lower / IELTS &lt; 4.5 / CELPIP &lt; 4)
+              </option>
+              <option value="0">Basic (CLB 4 / IELTS 4.5 / CELPIP 4)</option>
+              <option value="1">Limited (CLB 5 / IELTS 5/ CELPIP 5)</option>
+              <option value="1">Fair (CLB 6 / IELTS 5.5 / CELPIP 6)</option>
+              <option value="3">Good (CLB 7 / IELTS 6 - 7 / CELPIP 7)</option>
+              <option value="3">Very Good (CLB 8 / IELTS 7.5/ CELPIP 8)</option>
+              <option value="5">Advanced (CLB 9 / IELTS 8 / CELPIP 9)</option>
+              <option value="5">
+                Fluent/Natice (CLB 10 or higher / IELTS &gt; 8.5 / CELPIP &gt;
+                9)
+              </option>
+            </select>
+          </div>
+          <div class="writing">
+            <label for="language-writing"> Writing </label>
+            <select class="drop-input" id="language-writing" required>
+              <option value="0">select</option>
+              <option value="0">
+                None (CLB 3 or lower / IELTS &lt; 4 / CELPIP &lt; 4)
+              </option>
+              <option value="0">
+                Basic (CLB 4 / IELTS 4 - 4.5 / CELPIP 4)
+              </option>
+              <option value="1">Limited (CLB 5 / IELTS 5 / CELPIP 5)</option>
+              <option value="1">Fair (CLB 6 / IELTS 5.5 / CELPIP 6)</option>
+              <option value="3">Good (CLB 7 / IELTS 6 / CELPIP 7)</option>
+              <option value="3">Very Good (CLB 8 / IELTS 6.5/ CELPIP 8)</option>
+              <option value="5">Advanced (CLB 9 / IELTS 7 / CELPIP 9)</option>
+              <option value="5">
+                Fluent/Natice (CLB 10 or higher / IELTS &gt; 7 / CELPIP &gt; 9)
+              </option>
+            </select>
+          </div>
         </div>
       </div>
       <button class="btn" onclick="calculateCRSScore(formValues)">
