@@ -13,37 +13,87 @@ const formValues = {
 };
 
 // ***** Getting the values of Marital status ****
-function toggleMarital() {
-  const selectedMaritalStatus = document.querySelector(
-    'input[name="marital-status"]:checked'
+
+document.addEventListener("DOMContentLoaded", function () {
+  function toggleMarital() {
+    const selectedMaritalStatus = document.querySelector(
+      'input[name="marital-status"]:checked'
+    );
+
+    if (selectedMaritalStatus) {
+      formValues.maritalStatus = selectedMaritalStatus.value;
+      if (selectedMaritalStatus.value === "with") {
+        document.querySelector(".partner-status").style.display = "block";
+      } else {
+        document.querySelector(".partner-status").style.display = "none";
+      }
+    }
+  }
+
+  const maritalStatusButtons = document.querySelectorAll(
+    'input[name="marital-status"]'
   );
 
-  if (selectedMaritalStatus) {
-    formValues.maritalStatus = selectedMaritalStatus.value;
-    console.log("Marital Status:", formValues.maritalStatus);
-  }
-}
+  maritalStatusButtons.forEach((radioButton) => {
+    radioButton.addEventListener("change", toggleMarital);
+  });
 
-const maritalStatusButtons = document.querySelectorAll(
-  'input[name="marital-status"]'
-);
-
-maritalStatusButtons.forEach((radioButton) => {
-  radioButton.addEventListener("change", toggleMarital);
+  toggleMarital();
 });
 
+/*  Is partner citizen or not*/
+const isPartnerCitizenOrPrNo = document.getElementById(
+  "is-partner-citizen-or-pr-no"
+);
+const isPartnerCitizenOrPrYes = document.getElementById(
+  "is-partner-citizen-or-pr-yes"
+);
+
+isPartnerCitizenOrPrNo.addEventListener("change", function () {
+  if (isPartnerCitizenOrPrNo.checked) {
+    formValues.partnerCitizen = "no";
+  }
+});
+
+isPartnerCitizenOrPrYes.addEventListener("change", function () {
+  if (isPartnerCitizenOrPrYes.checked) {
+    formValues.partnerCitizen = "yes";
+  }
+});
+
+/* get the value of "partner-comes-to-canada" */
+
+const spouseClass = document.querySelector(".spouse-class");
+const partnerComesToCanadaNo = document.getElementById(
+  "partner-comes-to-canada-no"
+);
+const partnerComesToCanadaYes = document.getElementById(
+  "partner-comes-to-canada-yes"
+);
+
+partnerComesToCanadaNo.addEventListener("change", function () {
+  if (partnerComesToCanadaNo.checked) {
+    formValues.partnerComesToCanada = "no";
+    spouseClass.style.display = "none";
+
+    console.log("Partner comes to Canada: No");
+  }
+});
+
+partnerComesToCanadaYes.addEventListener("change", function () {
+  if (partnerComesToCanadaYes.checked) {
+    formValues.partnerComesToCanada = "yes";
+    spouseClass.style.display = "block";
+    console.log("Partner comes to Canada: Yes");
+  }
+});
+
+/* Get the value of Age */
 const ageInput = document.getElementById("age");
 
 ageInput.addEventListener("input", () => {
   formValues.age = ageInput.value;
   console.log("Age:", formValues.age);
-});
-
-/* Get the value of international Education */
-
-var internationalCourse = document.getElementById("international-course");
-internationalCourse.addEventListener("change", function () {
-  formValues.internationalEducation = internationalCourse.value;
 });
 
 /* Getting the value from Canadian Education -> YES OR NO */
@@ -64,6 +114,13 @@ canadianEducationYes.addEventListener("change", function () {
   }
 });
 
+/* Get the value of international Education */
+
+var internationalCourse = document.getElementById("international-course");
+internationalCourse.addEventListener("change", function () {
+  formValues.internationalEducation = internationalCourse.value;
+});
+
 /* Getting the values from Canadian Course */
 const canadianCourse = document.getElementById("canadian-course");
 
@@ -73,35 +130,107 @@ canadianCourse.addEventListener("change", () => {
 });
 
 /* Getting the values of Language Test */
-function language() {
-  const readingValue = parseFloat(
-    document.getElementById("language-reading").value
-  );
-  const speakingValue = parseFloat(
-    document.getElementById("language-speaking").value
-  );
-  const listeningValue = parseFloat(
-    document.getElementById("language-listening").value
-  );
-  const writingValue = parseFloat(
-    document.getElementById("language-writing").value
-  );
-  if (
-    isNaN(readingValue) ||
-    isNaN(speakingValue) ||
-    isNaN(listeningValue) ||
-    isNaN(writingValue)
-  ) {
-    console.error("One or more values are not valid numbers.");
-    return;
+
+/* 
+const spouseLanguage = {
+  speaking: "",
+  reading: "",
+  listening: "",
+  writing: "",
+};
+
+const spouseReadingSelect = document.getElementById("spouse-reading");
+const spouseSpeakingSelect = document.getElementById("spouse-speaking");
+const spouseListeningSelect = document.getElementById("spouse-listening");
+const spouseWritingSelect = document.getElementById("spouse-writing");
+spouseReadingSelect.addEventListener("change", function () {
+  spouseLanguage.reading = parseFloat(spouseReadingSelect.value);
+});
+
+spouseSpeakingSelect.addEventListener("change", function () {
+  console.log(spouseSpeakingSelect.value);
+  spouseLanguage.speaking = parseFloat(spouseSpeakingSelect.value);
+});
+
+spouseListeningSelect.addEventListener("change", function () {
+  console.log(spouseListeningSelect.value);
+  spouseLanguage.listening = parseFloat(spouseListeningSelect.value);
+});
+
+spouseWritingSelect.addEventListener("change", function () {
+  console.log(spouseWritingSelect.value);
+  spouseLanguage.writing = parseFloat(spouseWritingSelect.value);
+  const spouseLanguageScore =
+    spouseLanguage.listening +
+    spouseLanguage.reading +
+    spouseLanguage.writing +
+    spouseLanguage.speaking;
+  formValues.spouseLanguageScore = spouseLanguageScore;
+});
+*/
+
+const languageScore = {};
+
+const readingValue = document.getElementById("language-reading");
+const speakingValue = document.getElementById("language-speaking");
+
+const listeningValue = document.getElementById("language-listening");
+
+const writingValue = document.getElementById("language-writing");
+
+readingValue.addEventListener("change", function () {
+  languageScore.reading = parseFloat(readingValue.value);
+});
+speakingValue.addEventListener("change", function () {
+  languageScore.speaking = parseFloat(speakingValue.value);
+});
+listeningValue.addEventListener("change", function () {
+  languageScore.listening = parseFloat(listeningValue.value);
+});
+writingValue.addEventListener("change", function () {
+  languageScore.writing = parseFloat(writingValue.value);
+  const total =
+    languageScore.reading +
+    languageScore.writing +
+    languageScore.listening +
+    languageScore.speaking;
+  formValues.languageScore = total;
+});
+
+// if (
+//   isNaN(readingValue) ||
+//   isNaN(speakingValue) ||
+//   isNaN(listeningValue) ||
+//   isNaN(writingValue)
+// ) {
+//   console.error("One or more values are not valid numbers.");
+//   return;
+// }
+
+// const add = readingValue + speakingValue + listeningValue + writingValue;
+// formValues.englishLanguage = add;
+
+// const submitButton = document.getElementById("language-btn");
+// submitButton.addEventListener("click", language);
+
+/* the selected value of the "know-french" radio buttons */
+const knowFrenchNo = document.getElementById("know-french-no");
+const knowFrenchYes = document.getElementById("know-french-yes");
+const frenchLanguageSection = document.querySelector(".french-language");
+
+function toggleFrenchLanguageSection() {
+  if (knowFrenchYes.checked) {
+    formValues.secondLanguage = "yes";
+    frenchLanguageSection.style.display = "block";
+  } else {
+    formValues.secondLanguage = "no";
+    frenchLanguageSection.style.display = "none";
   }
-
-  const add = readingValue + speakingValue + listeningValue + writingValue;
-  formValues.englishLanguage = add;
 }
+knowFrenchNo.addEventListener("change", toggleFrenchLanguageSection);
+knowFrenchYes.addEventListener("change", toggleFrenchLanguageSection);
 
-const submitButton = document.getElementById("language-btn");
-submitButton.addEventListener("click", language);
+/* Get the value of French */
 
 function frenchLanguage() {
   const readingValue = parseFloat(
@@ -468,7 +597,7 @@ function calculateCRSScore(formValues) {
           : 80
         : 0,
 
-    CLB: formValues.englishLanguage,
+    CLB: formValues.languageScore,
     // < 4
     //   ? 0
     //   : formValues.englishLanguage < 6
