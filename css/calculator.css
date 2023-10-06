@@ -1,5 +1,6 @@
 html {
   font-size: 62.5%;
+  margin: 0;
 }
 
 body {
@@ -12,30 +13,59 @@ body {
   font-weight: 400;
   font-size: 1.6rem;
   line-height: 1.7;
-  padding: 3rem;
   font-size: large;
 }
 
-.ielts,
-.tcf,
-.tef {
-  display: none;
+.question {
+  margin: 0.5rem;
+  border-bottom: 1px solid grey;
+  padding: 1rem;
 }
 
-label {
-  display: block !important;
-  font-weight: 400;
+label,
+p {
+  color: black;
+  font-weight: 420;
+  font-size: large;
 }
 
-.drop-input,
-option {
-  height: 3rem;
+input {
+  background-color: rgb(231, 238, 238);
+  height: 4rem;
+  border-radius: 1rem;
 }
 
-.hidden {
-  display: none;
+.drop-input {
+  background-color: rgb(231, 238, 238);
+  margin: 1rem;
+  align-items: center;
+  height: 4.5rem;
+  border-radius: 1rem;
 }
 
-.radio-buttons {
+.p1 {
+  font-size: 1.4rem;
+}
+
+.sub {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.centerCurser {
+  text-align: center;
+}
+
+.language,
+.language2,
+.language3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+}
+.language .drop-input,
+.language2 .drop-input,
+.language3 .drop-input {
+  width: 40rem;
 }

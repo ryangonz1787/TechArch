@@ -415,3 +415,35 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+/*
+const formValues = {
+  maritalStatus: "With",
+  age: 25,
+  canadianEducation: "BachelorDegree",
+  firstLanguageCLB: 9,
+  secondLanguageCLB: 7,
+  selectedCanadianExperience: "3Years",
+  spouseEducation: "BachelorDegree",
+  spouseLanguageCLB: "CLB7Or8",
+  spouseExperience: "2Years",
+  foreignWorkExperience: "1YearOr2Years",
+  selectedCertificateQualification: "With",
+  canadianCourse: "OneYear",
+  jobOfferRadio: "TEER1or2or3",
+  selectedNocTeer: "TEER3",
+  nominationCertificateValue: true,
+  siblingCitizenValue: true,
+  frenchLanguageSkills: true,
+};
+
+*/
+
+// CRS Score: 200
+// operationHandler.js:578  Core HumanAge age : 110
+// operationHandler.js:579  Core HumanAge canadian eduation: 0
+// operationHandler.js:583  Core HumanAge  work experiece: 40
+// operationHandler.js:589 Additional Points  siblin: 0
+// operationHandler.js:590 Additional Points  ps education: 0
+// operationHandler.js:594 Additional Points employement : undefined
+// operationHandler.js:598 Additional Points pnp : 0

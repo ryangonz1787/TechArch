@@ -174,44 +174,6 @@ function calculateCRSScore(formValues) {
           : 150
         : 0,
 
-    // canadianCourse:
-    //   formValues.canadianCourse === "SecondaryDiploma"
-    //     ? formValues.maritalStatus === "with" &&
-    //       formValues.partnerComesToCanada === "yes"
-    //       ? 28
-    //       : 30
-    //     : formValues.canadianCourse === "OneYearProgram"
-    //     ? formValues.maritalStatus === "with" &&
-    //       formValues.partnerComesToCanada === "yes"
-    //       ? 84
-    //       : 90
-    //     : formValues.canadianCourse === "TwoYearProgram"
-    //     ? formValues.maritalStatus === "with" &&
-    //       formValues.partnerComesToCanada === "yes"
-    //       ? 91
-    //       : 98
-    //     : formValues.canadianCourse === "BachelorDegree"
-    //     ? formValues.maritalStatus === "with" &&
-    //       formValues.partnerComesToCanada === "yes"
-    //       ? 112
-    //       : 120
-    //     : formValues.canadianCourse === "TwoOrMoreDegrees"
-    //     ? formValues.maritalStatus === "with" &&
-    //       formValues.partnerComesToCanada === "yes"
-    //       ? 119
-    //       : 128
-    //     : formValues.canadianCourse === "MastersDegree"
-    //     ? formValues.maritalStatus === "with" &&
-    //       formValues.partnerComesToCanada === "yes"
-    //       ? 126
-    //       : 135
-    //     : formValues.canadianCourse === "PhD"
-    //     ? formValues.maritalStatus === "with" &&
-    //       formValues.partnerComesToCanada === "yes"
-    //       ? 140
-    //       : 150
-    //     : 0,
-
     canadianWorkExperience:
       formValues.selectedCanadianExperience === "None"
         ? 0
@@ -242,7 +204,11 @@ function calculateCRSScore(formValues) {
           : 80
         : 0,
 
-    CLB: formValues.languageScore,
+    CLB:
+      formValues.maritalStatus === "with" &&
+      formValues.partnerComesToCanada === "yes"
+        ? formValues.languageScore - 4
+        : formValues.languageScore,
   };
 
   const spouseFactorsPoints = {
@@ -290,6 +256,8 @@ function calculateCRSScore(formValues) {
         ? formValues.spouseLanguageScore
         : 0,
   };
+
+  /* TOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO DOOOOOOOOOOOOOOOOOOOOOOOOOOOO */
 
   // const skillTransferabilityPoints = {
   //   educationWithCLB7OrHigher: 0, // Needs to be calculated based on foreign education
@@ -353,7 +321,6 @@ function calculateCRSScore(formValues) {
 
   console.log("----------Core HumanAge -------");
   console.log(" age :", coreHumanCapitalPoints.age);
-  console.log(" canadian eduation:", coreHumanCapitalPoints.canadianCourse);
   console.log(
     "  work experiece:",
     coreHumanCapitalPoints.canadianWorkExperience
@@ -382,4 +349,11 @@ function calculateCRSScore(formValues) {
   );
   console.log("Arranged employement :", additionalPoints.arrangedEmployment);
   console.log("PNP  :", additionalPoints.provincialNomination);
+
+  // Assuming you have a variable named "resultDiv" that references the div with class "result"
+  const resultDiv = document.querySelector(".result");
+
+  resultDiv.innerHTML = `
+    <p>CRS Score: ${grandTotal}</p>
+   `;
 }
