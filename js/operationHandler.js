@@ -5,421 +5,33 @@ const formValues = {
   canadianCourse: "",
   selectedCanadianExperience: "",
   selectedForeignExperience: "",
-  selectedCertificateQualification: "",
   jobOfferRadio: "",
   selectedNocTeer: "",
   nominationCertificateValue: "",
   siblingCitizenValue: "",
 };
 
-// ***** Getting the values of Marital status ****
-
-document.addEventListener("DOMContentLoaded", function () {
-  function toggleMarital() {
-    const selectedMaritalStatus = document.querySelector(
-      'input[name="marital-status"]:checked'
-    );
-
-    if (selectedMaritalStatus) {
-      formValues.maritalStatus = selectedMaritalStatus.value;
-      if (selectedMaritalStatus.value === "with") {
-        document.querySelector(".partner-status").style.display = "block";
-      } else {
-        document.querySelector(".partner-status").style.display = "none";
-      }
-    }
-  }
-
-  const maritalStatusButtons = document.querySelectorAll(
-    'input[name="marital-status"]'
-  );
-
-  maritalStatusButtons.forEach((radioButton) => {
-    radioButton.addEventListener("change", toggleMarital);
-  });
-
-  toggleMarital();
-});
-
-/*  Is partner citizen or not*/
-const isPartnerCitizenOrPrNo = document.getElementById(
-  "is-partner-citizen-or-pr-no"
-);
-const isPartnerCitizenOrPrYes = document.getElementById(
-  "is-partner-citizen-or-pr-yes"
-);
-
-isPartnerCitizenOrPrNo.addEventListener("change", function () {
-  if (isPartnerCitizenOrPrNo.checked) {
-    formValues.partnerCitizen = "no";
-  }
-});
-
-isPartnerCitizenOrPrYes.addEventListener("change", function () {
-  if (isPartnerCitizenOrPrYes.checked) {
-    formValues.partnerCitizen = "yes";
-  }
-});
-
-/* get the value of "partner-comes-to-canada" */
-
-const spouseClass = document.querySelector(".spouse-class");
-const partnerComesToCanadaNo = document.getElementById(
-  "partner-comes-to-canada-no"
-);
-const partnerComesToCanadaYes = document.getElementById(
-  "partner-comes-to-canada-yes"
-);
-
-partnerComesToCanadaNo.addEventListener("change", function () {
-  if (partnerComesToCanadaNo.checked) {
-    formValues.partnerComesToCanada = "no";
-    spouseClass.style.display = "none";
-
-    console.log("Partner comes to Canada: No");
-  }
-});
-
-partnerComesToCanadaYes.addEventListener("change", function () {
-  if (partnerComesToCanadaYes.checked) {
-    formValues.partnerComesToCanada = "yes";
-    spouseClass.style.display = "block";
-    console.log("Partner comes to Canada: Yes");
-  }
-});
-
-/* Get the value of Age */
-const ageInput = document.getElementById("age");
-
-ageInput.addEventListener("input", () => {
-  formValues.age = ageInput.value;
-  console.log("Age:", formValues.age);
-});
-
-/* Getting the value from Canadian Education -> YES OR NO */
-const canadianEducationNo = document.getElementById("canadian-education-no");
-const canadianEducationYes = document.getElementById("canadian-education-yes");
-
-canadianEducationNo.addEventListener("change", function () {
-  if (canadianEducationNo.checked) {
-    formValues.canadianEducation = canadianEducationNo.value;
-    console.log("Canadian Education Value:", formValues.canadianEducation);
-  }
-});
-
-canadianEducationYes.addEventListener("change", function () {
-  if (canadianEducationYes.checked) {
-    formValues.canadianEducation = canadianEducationYes.value;
-    console.log("Canadian Education Value:", formValues.canadianEducation);
-  }
-});
-
-/* Get the value of international Education */
-
-var internationalCourse = document.getElementById("international-course");
-internationalCourse.addEventListener("change", function () {
-  formValues.internationalEducation = internationalCourse.value;
-});
-
-/* Getting the values from Canadian Course */
-const canadianCourse = document.getElementById("canadian-course");
-
-canadianCourse.addEventListener("change", () => {
-  formValues.canadianCourse = canadianCourse.value;
-  console.log("Canadian Course:", formValues.canadianCourse);
-});
-
-/* Getting the values of Language Test */
-
 /* 
-const spouseLanguage = {
-  speaking: "",
-  reading: "",
-  listening: "",
-  writing: "",
-};
+age: "23"
+canadianCourse : "BachelorDegree"
+canadianEducation: "yes"
+internationalEducation :"BachelorDegree"
+jobOfferRadio: "yes"
+languageScore : 125
+maritalStatus : "with"
+nominationCertificateValue : "no"
+partnerCitizen : "no"
+partnerComesToCanada : "no"
+secondLanguage : "no"
+selectedCanadianExperience : "one-year"
+CertificateQualification : "no"
+selectedForeignExperience : "none"
+selectedNocTeer : "noc-three"
+siblingCitizenValue : "no"
+spouseLanguageScore: 0,
 
-const spouseReadingSelect = document.getElementById("spouse-reading");
-const spouseSpeakingSelect = document.getElementById("spouse-speaking");
-const spouseListeningSelect = document.getElementById("spouse-listening");
-const spouseWritingSelect = document.getElementById("spouse-writing");
-spouseReadingSelect.addEventListener("change", function () {
-  spouseLanguage.reading = parseFloat(spouseReadingSelect.value);
-});
 
-spouseSpeakingSelect.addEventListener("change", function () {
-  console.log(spouseSpeakingSelect.value);
-  spouseLanguage.speaking = parseFloat(spouseSpeakingSelect.value);
-});
-
-spouseListeningSelect.addEventListener("change", function () {
-  console.log(spouseListeningSelect.value);
-  spouseLanguage.listening = parseFloat(spouseListeningSelect.value);
-});
-
-spouseWritingSelect.addEventListener("change", function () {
-  console.log(spouseWritingSelect.value);
-  spouseLanguage.writing = parseFloat(spouseWritingSelect.value);
-  const spouseLanguageScore =
-    spouseLanguage.listening +
-    spouseLanguage.reading +
-    spouseLanguage.writing +
-    spouseLanguage.speaking;
-  formValues.spouseLanguageScore = spouseLanguageScore;
-});
 */
-
-const languageScore = {};
-
-const readingValue = document.getElementById("language-reading");
-const speakingValue = document.getElementById("language-speaking");
-
-const listeningValue = document.getElementById("language-listening");
-
-const writingValue = document.getElementById("language-writing");
-
-readingValue.addEventListener("change", function () {
-  languageScore.reading = parseFloat(readingValue.value);
-});
-speakingValue.addEventListener("change", function () {
-  languageScore.speaking = parseFloat(speakingValue.value);
-});
-listeningValue.addEventListener("change", function () {
-  languageScore.listening = parseFloat(listeningValue.value);
-});
-writingValue.addEventListener("change", function () {
-  languageScore.writing = parseFloat(writingValue.value);
-  const total =
-    languageScore.reading +
-    languageScore.writing +
-    languageScore.listening +
-    languageScore.speaking;
-  formValues.languageScore = total;
-});
-
-// if (
-//   isNaN(readingValue) ||
-//   isNaN(speakingValue) ||
-//   isNaN(listeningValue) ||
-//   isNaN(writingValue)
-// ) {
-//   console.error("One or more values are not valid numbers.");
-//   return;
-// }
-
-// const add = readingValue + speakingValue + listeningValue + writingValue;
-// formValues.englishLanguage = add;
-
-// const submitButton = document.getElementById("language-btn");
-// submitButton.addEventListener("click", language);
-
-/* the selected value of the "know-french" radio buttons */
-const knowFrenchNo = document.getElementById("know-french-no");
-const knowFrenchYes = document.getElementById("know-french-yes");
-const frenchLanguageSection = document.querySelector(".french-language");
-
-function toggleFrenchLanguageSection() {
-  if (knowFrenchYes.checked) {
-    formValues.secondLanguage = "yes";
-    frenchLanguageSection.style.display = "block";
-  } else {
-    formValues.secondLanguage = "no";
-    frenchLanguageSection.style.display = "none";
-  }
-}
-knowFrenchNo.addEventListener("change", toggleFrenchLanguageSection);
-knowFrenchYes.addEventListener("change", toggleFrenchLanguageSection);
-
-/* Get the value of French */
-
-function frenchLanguage() {
-  const readingValue = parseFloat(
-    document.getElementById("french-reading").value
-  );
-  const speakingValue = parseFloat(
-    document.getElementById("french-speaking").value
-  );
-  const listeningValue = parseFloat(
-    document.getElementById("french-listening").value
-  );
-  const writingValue = parseFloat(
-    document.getElementById("french-writing").value
-  );
-  if (
-    isNaN(readingValue) ||
-    isNaN(speakingValue) ||
-    isNaN(listeningValue) ||
-    isNaN(writingValue)
-  ) {
-    console.error("One or more values are not valid numbers.");
-    return;
-  }
-  const add = readingValue + speakingValue + listeningValue + writingValue;
-  formValues.frenchLanguage = add;
-  console.log("Rounded French Language:", add);
-}
-const frenchButton = document.getElementById("french-btn");
-frenchButton.addEventListener("click", frenchLanguage);
-
-/*  Values for canadian Work Experience*/
-
-const canadianWorkExperienceSelect = document.getElementById("work-experience");
-const foreignWorkExperienceSelect = document.getElementById(
-  "foreign-work-experience"
-);
-function getSelectedValues() {
-  formValues.selectedCanadianExperience = canadianWorkExperienceSelect.value;
-  formValues.selectedForeignExperience = foreignWorkExperienceSelect.value;
-  console.log(
-    "Selected Canadian Work Experience:",
-    formValues.selectedCanadianExperience
-  );
-  console.log(
-    "Selected Foreign Work Experience:",
-    formValues.selectedForeignExperience
-  );
-}
-
-canadianWorkExperienceSelect.addEventListener("change", getSelectedValues);
-foreignWorkExperienceSelect.addEventListener("change", getSelectedValues);
-
-/*  Certificate of Qualification from Canadian Province */
-const certificateQualificationSelect = document.getElementById(
-  "certificate-qualification"
-);
-function getSelectedValue() {
-  formValues.selectedCertificateQualification =
-    certificateQualificationSelect.value;
-  console.log(
-    "Selected Certificate Qualification:",
-    formValues.selectedCertificateQualification
-  );
-}
-certificateQualificationSelect.addEventListener("change", getSelectedValue);
-
-/* Do you have a valid job offer supported by a Labour Market Impact Assessment? */
-const yesRadioButton = document.getElementById("job-offer-yes");
-const noRadioButton = document.getElementById("job-offer-no");
-
-yesRadioButton.addEventListener("change", function () {
-  if (yesRadioButton.checked === "yes") {
-    formValues.jobOfferRadio = yesRadioButton.value;
-    console.log("job offer: ", formValues.jobOfferRadio);
-  }
-});
-
-noRadioButton.addEventListener("change", function () {
-  if (noRadioButton.checked === "no") {
-    formValues.jobOfferRadio = noRadioButton.value;
-    console.log("job offer :", formValues.jobOfferRadio);
-  }
-});
-
-/* --- Get the values of NOC TEER --- */
-const nocTeerSelect = document.getElementById("noc-teer");
-
-nocTeerSelect.addEventListener("change", function () {
-  formValues.selectedNocTeer = nocTeerSelect.value;
-  console.log(formValues.selectedNocTeer);
-});
-
-/* -----Nomination Certificate values yes or no */
-
-const nominationCertificateYes = document.getElementById(
-  "nomination-certificate-yes"
-);
-const nominationCertificateNo = document.getElementById(
-  "nomination-certificate-no"
-);
-nominationCertificateYes.addEventListener("change", function () {
-  if (nominationCertificateYes.checked) {
-    formValues.nominationCertificateValue = nominationCertificateYes.value;
-    console.log(formValues.nominationCertificateValue);
-  }
-});
-
-nominationCertificateNo.addEventListener("change", function () {
-  if (nominationCertificateNo.checked) {
-    formValues.nominationCertificateValue = nominationCertificateNo.value;
-    console.log(formValues.nominationCertificateValue);
-  }
-});
-
-/* -----Sibling Citizen value Yes or No */
-
-const siblingCitizenYes = document.getElementById("sibling-citizen-yes");
-const siblingCitizenNo = document.getElementById("sibling-citizen-no");
-
-siblingCitizenYes.addEventListener("change", function () {
-  if (siblingCitizenYes.checked) {
-    formValues.siblingCitizenValue = siblingCitizenYes.value;
-    console.log(formValues.siblingCitizenValue);
-  }
-});
-
-siblingCitizenNo.addEventListener("change", function () {
-  if (siblingCitizenNo.checked) {
-    formValues.siblingCitizenValue = siblingCitizenNo.value;
-    console.log(formValues.siblingCitizenValue);
-  }
-});
-
-/* get the values of spouse course */
-
-var spouseCourseSelect = document.getElementById("spouse-course");
-spouseCourseSelect.addEventListener("change", function () {
-  var selectedValue = spouseCourseSelect.value;
-  console.log(selectedValue);
-});
-
-/* Get the value of spouse work experinece */
-
-var spouseWorkExperienceSelect = document.getElementById(
-  "spouse-work-experience"
-);
-spouseWorkExperienceSelect.addEventListener("change", function () {
-  var selectedValue = spouseWorkExperienceSelect.value;
-  console.log(selectedValue);
-});
-
-/* Get the values of spouse Language */
-
-const spouseLanguage = {
-  speaking: "",
-  reading: "",
-  listening: "",
-  writing: "",
-};
-
-const spouseReadingSelect = document.getElementById("spouse-reading");
-const spouseSpeakingSelect = document.getElementById("spouse-speaking");
-const spouseListeningSelect = document.getElementById("spouse-listening");
-const spouseWritingSelect = document.getElementById("spouse-writing");
-spouseReadingSelect.addEventListener("change", function () {
-  spouseLanguage.reading = parseFloat(spouseReadingSelect.value);
-});
-
-spouseSpeakingSelect.addEventListener("change", function () {
-  console.log(spouseSpeakingSelect.value);
-  spouseLanguage.speaking = parseFloat(spouseSpeakingSelect.value);
-});
-
-spouseListeningSelect.addEventListener("change", function () {
-  console.log(spouseListeningSelect.value);
-  spouseLanguage.listening = parseFloat(spouseListeningSelect.value);
-});
-
-spouseWritingSelect.addEventListener("change", function () {
-  console.log(spouseWritingSelect.value);
-  spouseLanguage.writing = parseFloat(spouseWritingSelect.value);
-  const spouseLanguageScore =
-    spouseLanguage.listening +
-    spouseLanguage.reading +
-    spouseLanguage.writing +
-    spouseLanguage.speaking;
-  formValues.spouseLanguageScore = spouseLanguageScore;
-});
-
 /* Calucating the CRS Score */
 
 function calculateCRSScore(formValues) {
@@ -428,171 +40,204 @@ function calculateCRSScore(formValues) {
       formValues.age <= 17
         ? 0
         : formValues.age == 18
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 90
           : 99
         : formValues.age == 19
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 95
           : 105
         : formValues.age >= 20 && formValues.age <= 29
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 100
           : 110
         : formValues.age == 30
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 95
           : 105
         : formValues.age == 31
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 90
           : 99
         : formValues.age == 32
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 85
           : 94
         : formValues.age == 33
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 80
           : 88
         : formValues.age == 34
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 75
           : 83
         : formValues.age == 35
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 70
           : 77
         : formValues.age == 36
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 65
           : 72
         : formValues.age == 37
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 60
           : 66
         : formValues.age == 38
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 55
           : 61
         : formValues.age == 39
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 50
           : 55
         : formValues.age == 40
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 45
           : 50
         : formValues.age == 41
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 35
           : 39
         : formValues.age == 42
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 25
           : 28
         : formValues.age == 43
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 15
           : 17
         : formValues.age == 44
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 5
           : 6
-        : // : formValues.age >= 45
-          // ? formValues.maritalStatus === "with"
-          //   ? 0
-          //   : 0
-          0,
+        : 0,
 
     internationlEducation:
       formValues.internationalEducation === "none"
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 0
           : 0
         : formValues.internationalEducation === "SecondaryDiploma"
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 28
           : 30
         : formValues.internationalEducation === "OneYearProgram"
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 84
           : 90
         : formValues.internationalEducation === "TwoYearProgram"
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 91
           : 98
         : formValues.internationalEducation === "BachelorDegree"
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 112
           : 120
         : formValues.internationalEducation === "TwoOrMoreDegrees"
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 119
           : 128
         : formValues.internationalEducation === "MastersDegree"
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 126
           : 135
         : formValues.internationalEducation === "PhD"
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 140
           : 150
         : 0,
 
     canadianCourse:
       formValues.canadianCourse === "SecondaryDiploma"
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 28
           : 30
         : formValues.canadianCourse === "OneYearProgram"
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 84
           : 90
         : formValues.canadianCourse === "TwoYearProgram"
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 91
           : 98
         : formValues.canadianCourse === "BachelorDegree"
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 112
           : 120
         : formValues.canadianCourse === "TwoOrMoreDegrees"
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 119
           : 128
         : formValues.canadianCourse === "MastersDegree"
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 126
           : 135
         : formValues.canadianCourse === "PhD"
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 140
           : 150
         : 0,
-    // firstLanguageCLB: formValues.firstLanguageCLBPoints,
-    // secondLanguageCLB: formValues.secondLanguageCLBPoints,
+
     canadianWorkExperience:
       formValues.selectedCanadianExperience === "None"
         ? 0
         : formValues.selectedCanadianExperience === "one-year"
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 35
           : 40
         : formValues.selectedCanadianExperience === "two-years"
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 46
           : 53
         : formValues.selectedCanadianExperience === "three-years"
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 56
           : 64
         : formValues.selectedCanadianExperience === "four-years"
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 63
           : 72
         : formValues.selectedCanadianExperience === "five-years-or-more"
-        ? formValues.maritalStatus === "with"
+        ? formValues.maritalStatus === "with" &&
+          formValues.partnerComesToCanada === "yes"
           ? 70
           : 80
         : 0,
@@ -666,21 +311,25 @@ function calculateCRSScore(formValues) {
     //     : 0,
   };
 
-  const skillTransferabilityPoints = {
-    educationWithCLB7OrHigher: 0, // Needs to be calculated based on foreign education
-    educationWithCanadianWorkExperience: 0, // Needs to be calculated based on foreign education
-    foreignWorkExperienceWithCLB7OrHigher: 0, // Needs to be calculated based on foreign work experience
-    foreignWorkExperienceWithCanadianWorkExperience: 0, // Needs to be calculated based on foreign work experience
-    certificateQualificationWithCLB5OrHigher: 0, // Needs to be calculated based on certificate qualification
-  };
+  // const skillTransferabilityPoints = {
+  //   educationWithCLB7OrHigher: 0, // Needs to be calculated based on foreign education
+  //   educationWithCanadianWorkExperience: 0, // Needs to be calculated based on foreign education
+  //   foreignWorkExperienceWithCLB7OrHigher: 0, // Needs to be calculated based on foreign work experience
+  //   foreignWorkExperienceWithCanadianWorkExperience: 0, // Needs to be calculated based on foreign work experience
+  //   certificateQualificationWithCLB5OrHigher: 0, // Needs to be calculated based on certificate qualification
+  // };
 
   const additionalPoints = {
     siblingInCanada: formValues.siblingCitizenValue === "yes" ? 15 : 0,
     // frenchLanguageSkills: formValues.frenchLanguageSkills === "yes" ? 50 : 0,
     postSecondaryEducationInCanada:
-      formValues.canadianCourse === "canadian-three-years-or-more"
+      formValues.canadianCourse === "BachelorDegree" ||
+      formValues.canadianCourse === "TwoOrMoreDegrees" ||
+      formValues.canadianCourse === "MastersDegree" ||
+      formValues.canadianCourse === "PhD"
         ? 30
-        : formValues.canadianCourse === "canadian-one-two-year"
+        : formValues.canadianCourse === "OneYearProgram" ||
+          formValues.canadianCourse === "TwoYearProgram"
         ? 15
         : 0,
     arrangedEmployment:
@@ -704,9 +353,10 @@ function calculateCRSScore(formValues) {
     (acc, curr) => acc + curr,
     0
   );
-  const skillTransferabilityTotal = Object.values(
-    skillTransferabilityPoints
-  ).reduce((acc, curr) => acc + curr, 0);
+  console.log(spouseFactorsTotal);
+  // const skillTransferabilityTotal = Object.values(
+  //   skillTransferabilityPoints
+  // ).reduce((acc, curr) => acc + curr, 0);
   const additionalPointsTotal = Object.values(additionalPoints).reduce(
     (acc, curr) => acc + curr,
     0
@@ -715,8 +365,8 @@ function calculateCRSScore(formValues) {
   // Calculate the grand total
   const grandTotal =
     coreHumanCapitalTotal +
-    spouseFactorsTotal +
-    skillTransferabilityTotal +
+    // spouseFactorsTotal +
+    // skillTransferabilityTotal +
     additionalPointsTotal;
 
   console.log("CRS Score:", grandTotal);
@@ -730,6 +380,10 @@ function calculateCRSScore(formValues) {
     " Core HumanAge  work experiece:",
     coreHumanCapitalPoints.canadianWorkExperience
   );
+  // console.log(
+  //   "Additional Points Level of Educatoin :",
+  //   coreHumanCapitalPoints.internationlEducation
+  // );
   // console.log(spouseFactorsPoints);
   // console.log(skillTransferabilityPoints);
   console.log("Additional Points  siblin:", additionalPoints.siblingInCanada);
