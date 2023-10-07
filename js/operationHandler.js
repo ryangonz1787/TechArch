@@ -257,15 +257,115 @@ function calculateCRSScore(formValues) {
         : 0,
   };
 
-  /* TOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO DOOOOOOOOOOOOOOOOOOOOOOOOOOOO */
+  const skillTransferabilityPoints = {
+    educationWithCLB7OrHigher: 0,
+    educationWithCanadianWorkExperience: 0, // Needs to be calculated based on foreign education
+    foreignWorkExperienceWithCLB7OrHigher: 0,
+    foreignWorkExperienceWithCanadianWorkExperience: 0, // Needs to be calculated based on foreign work experience
+    certificateQualificationWithCLB5OrHigher: 0, // Needs to be calculated based on certificate qualification
+  };
 
-  // const skillTransferabilityPoints = {
-  //   educationWithCLB7OrHigher: 0, // Needs to be calculated based on foreign education
-  //   educationWithCanadianWorkExperience: 0, // Needs to be calculated based on foreign education
-  //   foreignWorkExperienceWithCLB7OrHigher: 0, // Needs to be calculated based on foreign work experience
-  //   foreignWorkExperienceWithCanadianWorkExperience: 0, // Needs to be calculated based on foreign work experience
-  //   certificateQualificationWithCLB5OrHigher: 0, // Needs to be calculated based on certificate qualification
-  // };
+  /*  Skil Transfer Abilities Calculations */
+
+  function calculatePointsForForeignExperience() {
+    const clbLevel = calculateCLB();
+
+    if (formValues.selectedForeignExperience === "none") {
+      return 0;
+    } else if (
+      formValues.selectedForeignExperience === "one-year" &&
+      (clbLevel === "CLB7" || clbLevel === "CLB9")
+    ) {
+      return clbLevel === "CLB7" ? 13 : 25;
+    } else if (
+      (formValues.selectedForeignExperience === "two-years" &&
+        clbLevel === "CLB7") ||
+      clbLevel === "CLB9"
+    ) {
+      return clbLevel === "CLB7" ? 25 : 50;
+    } else if (
+      (formValues.selectedForeignExperience === "three-years" &&
+        clbLevel === "CLB7") ||
+      clbLevel === "CLB9"
+    ) {
+      return clbLevel === "CLB7" ? 25 : 50;
+    }
+
+    return 0;
+  }
+  function calculateCLB() {
+    const values = Object.values(languageScore);
+
+    const countBelow17 = values.reduce((count, score) => {
+      if (score < 17) {
+        return count + 1;
+      }
+      return count;
+    }, 0);
+
+    if (countBelow17 > 0) {
+      return "CLB5";
+    }
+
+    const countBetween17And31 = values.reduce((count, score) => {
+      if (score >= 17 && score <= 31) {
+        return count + 1;
+      }
+      return count;
+    }, 0);
+
+    if (countBetween17And31 === 0) {
+      return "CLB9";
+    } else if (countBetween17And31 >= 1 && countBetween17And31 <= 3) {
+      return "CLB7";
+    }
+  }
+  skillTransferabilityPoints.foreignWorkExperienceWithCLB7OrHigher =
+    calculatePointsForForeignExperience();
+  console.log(
+    "Points for Foreign Experience:",
+    skillTransferabilityPoints.foreignWorkExperienceWithCLB7OrHigher
+  );
+
+  function calculatePointsForEducation(educationLevel, clbLevel) {
+    if (educationLevel === "none") {
+      return 0;
+    } else if (educationLevel === "SecondaryDiploma") {
+      return 0;
+    } else if (
+      educationLevel === "OneYearProgram" &&
+      (clbLevel === "CLB7" || clbLevel === "CLB9")
+    ) {
+      return clbLevel === "CLB7" ? 13 : 25;
+    } else if (
+      educationLevel === "TwoYearProgram" &&
+      (clbLevel === "CLB7" || clbLevel === "CLB9")
+    ) {
+      return clbLevel === "CLB7" ? 13 : 25;
+    } else if (
+      educationLevel === "BachelorDegree" &&
+      (clbLevel === "CLB7" || clbLevel === "CLB9")
+    ) {
+      return clbLevel === "CLB7" ? 13 : 25;
+    } else if (
+      educationLevel === "MastersDegree" &&
+      (clbLevel === "CLB7" || clbLevel === "CLB9")
+    ) {
+      return clbLevel === "CLB7" ? 25 : 50;
+    } else if (
+      educationLevel === "PhD" &&
+      (clbLevel === "CLB7" || clbLevel === "CLB9")
+    ) {
+      return clbLevel === "CLB7" ? 25 : 50;
+    }
+
+    return 0;
+  }
+
+  const educationLevel = formValues.internationalEducation;
+  const clbLevel = calculateCLB();
+  const points = calculatePointsForEducation(educationLevel, clbLevel);
+  skillTransferabilityPoints.educationWithCLB7OrHigher = points;
 
   const additionalPoints = {
     siblingInCanada: formValues.siblingCitizenValue === "yes" ? 15 : 0,
@@ -302,9 +402,9 @@ function calculateCRSScore(formValues) {
     0
   );
   console.log(spouseFactorsTotal);
-  // const skillTransferabilityTotal = Object.values(
-  //   skillTransferabilityPoints
-  // ).reduce((acc, curr) => acc + curr, 0);
+  const skillTransferabilityTotal = Object.values(
+    skillTransferabilityPoints
+  ).reduce((acc, curr) => acc + curr, 0);
   const additionalPointsTotal = Object.values(additionalPoints).reduce(
     (acc, curr) => acc + curr,
     0
@@ -314,7 +414,7 @@ function calculateCRSScore(formValues) {
   const grandTotal =
     coreHumanCapitalTotal +
     spouseFactorsTotal +
-    // skillTransferabilityTotal +
+    skillTransferabilityTotal +
     additionalPointsTotal;
 
   console.log("CRS Score:", grandTotal);
@@ -336,6 +436,16 @@ function calculateCRSScore(formValues) {
     coreHumanCapitalPoints.canadianWorkExperience
   );
 
+  console.log("------------Skills Ability -------");
+  console.log(
+    "Educaition with clb",
+    skillTransferabilityPoints.educationWithCLB7OrHigher
+  );
+  console.log(
+    "",
+    skillTransferabilityPoints.foreignWorkExperienceWithCLB7OrHigher
+  );
+
   console.log("---------- spouseFactorsPoints------------");
   console.log("Spouse Education", spouseFactorsPoints.education);
   console.log("Spouse Experinece", spouseFactorsPoints.spouseExperience);
@@ -350,7 +460,6 @@ function calculateCRSScore(formValues) {
   console.log("Arranged employement :", additionalPoints.arrangedEmployment);
   console.log("PNP  :", additionalPoints.provincialNomination);
 
-  // Assuming you have a variable named "resultDiv" that references the div with class "result"
   const resultDiv = document.querySelector(".result");
 
   resultDiv.innerHTML = `

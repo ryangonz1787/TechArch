@@ -117,35 +117,49 @@ canadianCourse.addEventListener("change", () => {
 
 /* Getting the values of Language Test */
 
-const languageScore = {};
+const languageScore = {
+  reading: 0,
+  writing: 0,
+  speaking: 0,
+  listening: 0,
+};
 
 const readingValue = document.getElementById("language-reading");
 const speakingValue = document.getElementById("language-speaking");
-
 const listeningValue = document.getElementById("language-listening");
-
 const writingValue = document.getElementById("language-writing");
 
 readingValue.addEventListener("change", function () {
   languageScore.reading = parseFloat(readingValue.value);
+  updateTotalLanguageScore();
 });
+
 speakingValue.addEventListener("change", function () {
   languageScore.speaking = parseFloat(speakingValue.value);
+  updateTotalLanguageScore();
 });
+
 listeningValue.addEventListener("change", function () {
   languageScore.listening = parseFloat(listeningValue.value);
+  updateTotalLanguageScore();
 });
+
 writingValue.addEventListener("change", function () {
   languageScore.writing = parseFloat(writingValue.value);
+  updateTotalLanguageScore();
+});
+
+function updateTotalLanguageScore() {
   const total =
     languageScore.reading +
     languageScore.writing +
     languageScore.listening +
     languageScore.speaking;
   formValues.languageScore = total;
-});
+}
 
 /* the selected value of the "know-french" radio buttons */
+
 const knowFrenchNo = document.getElementById("know-french-no");
 const knowFrenchYes = document.getElementById("know-french-yes");
 const frenchLanguageSection = document.querySelector(".french-language");
@@ -164,7 +178,12 @@ knowFrenchYes.addEventListener("change", toggleFrenchLanguageSection);
 
 /* Get the value of French */
 
-const secondLanguageScore = {};
+const secondLanguageScore = {
+  reading: 0,
+  writing: 0,
+  speaking: 0,
+  listening: 0,
+};
 
 const reading = document.getElementById("french-reading");
 const speaking = document.getElementById("french-speaking");
@@ -173,22 +192,29 @@ const writing = document.getElementById("french-writing");
 
 reading.addEventListener("change", function () {
   secondLanguageScore.reading = parseInt(reading.value);
+  updateSecondLanguageScore();
 });
 speaking.addEventListener("change", function () {
   secondLanguageScore.speaking = parseInt(speaking.value);
+  updateSecondLanguageScore();
 });
 listening.addEventListener("change", function () {
   secondLanguageScore.listening = parseInt(listening.value);
+  updateSecondLanguageScore();
 });
 writing.addEventListener("change", function () {
   secondLanguageScore.writing = parseInt(writing.value);
+  updateSecondLanguageScore();
+});
+
+function updateSecondLanguageScore() {
   const add =
     secondLanguageScore.speaking +
     secondLanguageScore.writing +
     secondLanguageScore.listening +
     secondLanguageScore.reading;
   formValues.secondLanguageScore = add;
-});
+}
 
 /*  Values for canadian Work Experience*/
 
