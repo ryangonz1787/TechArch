@@ -9,6 +9,8 @@ const formValues = {
   selectedNocTeer: "",
   nominationCertificateValue: "",
   siblingCitizenValue: "",
+  languageScore: "",
+  spouseLanguageScore: 0,
 };
 
 /* 
@@ -207,7 +209,7 @@ function calculateCRSScore(formValues) {
     CLB:
       formValues.maritalStatus === "with" &&
       formValues.partnerComesToCanada === "yes"
-        ? formValues.languageScore - 4
+        ? formValues.languageScore - 8
         : formValues.languageScore,
   };
 
@@ -259,10 +261,42 @@ function calculateCRSScore(formValues) {
 
   const skillTransferabilityPoints = {
     educationWithCLB7OrHigher: 0,
-    educationWithCanadianWorkExperience: 0, // Needs to be calculated based on foreign education
+    educationWithCanadianWorkExperience:
+      formValues.canadianCourse === "none"
+        ? 0
+        : formValues.selectedCanadianExperience === "none"
+        ? 0
+        : formValues.canadianCourse === "SecondaryDiploma"
+        ? 0
+        : formValues.canadianCourse === "OneYearProgram"
+        ? formValues.selectedCanadianExperience === "one-year"
+          ? 13
+          : 25
+        : formValues.canadianCourse === "TwoYearProgram"
+        ? formValues.selectedCanadianExperience === "one-year"
+          ? 13
+          : 25
+        : formValues.canadianCourse === "BachelorDegree"
+        ? formValues.selectedCanadianExperience === "one-year"
+          ? 25
+          : 50
+        : formValues.canadianCourse === "TwoOrMoreDegrees"
+        ? formValues.selectedCanadianExperience === "one-year"
+          ? 25
+          : 50
+        : formValues.canadianCourse === "MastersDegree"
+        ? formValues.selectedCanadianExperience === "one-year"
+          ? 25
+          : 50
+        : formValues.canadianCourse === "PhD"
+        ? formValues.selectedCanadianExperience === "one-year"
+          ? 25
+          : 50
+        : 0,
+
     foreignWorkExperienceWithCLB7OrHigher: 0,
-    foreignWorkExperienceWithCanadianWorkExperience: 0, // Needs to be calculated based on foreign work experience
-    certificateQualificationWithCLB5OrHigher: 0, // Needs to be calculated based on certificate qualification
+    foreignWorkExperienceWithCanadianWorkExperience: 0,
+    certificateQualificationWithCLB5OrHigher: 0,
   };
 
   /*  Skil Transfer Abilities Calculations */
@@ -441,9 +475,14 @@ function calculateCRSScore(formValues) {
     "Educaition with clb",
     skillTransferabilityPoints.educationWithCLB7OrHigher
   );
+
   console.log(
-    "",
+    "Foreign Exp with CLB 7 or Higher",
     skillTransferabilityPoints.foreignWorkExperienceWithCLB7OrHigher
+  );
+  console.log(
+    "Candain Exp and Edu",
+    skillTransferabilityPoints.educationWithCanadianWorkExperience
   );
 
   console.log("---------- spouseFactorsPoints------------");
