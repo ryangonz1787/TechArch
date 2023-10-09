@@ -349,29 +349,37 @@ const spouseSpeakingSelect = document.getElementById("spouse-speaking");
 const spouseListeningSelect = document.getElementById("spouse-listening");
 const spouseWritingSelect = document.getElementById("spouse-writing");
 spouseReadingSelect.addEventListener("change", function () {
-  spouseLanguage.reading = parseFloat(spouseReadingSelect.value);
+  console.log(spouseReadingSelect.value);
+
+  spouseLanguage.reading = parseInt(spouseReadingSelect.value);
+  updateSpouseScore();
 });
 
 spouseSpeakingSelect.addEventListener("change", function () {
   console.log(spouseSpeakingSelect.value);
-  spouseLanguage.speaking = parseFloat(spouseSpeakingSelect.value);
+  spouseLanguage.speaking = parseInt(spouseSpeakingSelect.value);
+  updateSpouseScore();
 });
 
 spouseListeningSelect.addEventListener("change", function () {
   console.log(spouseListeningSelect.value);
-  spouseLanguage.listening = parseFloat(spouseListeningSelect.value);
+  spouseLanguage.listening = parseInt(spouseListeningSelect.value);
+  updateSpouseScore();
 });
 
 spouseWritingSelect.addEventListener("change", function () {
   console.log(spouseWritingSelect.value);
-  spouseLanguage.writing = parseFloat(spouseWritingSelect.value);
+  spouseLanguage.writing = parseInt(spouseWritingSelect.value);
+  updateSpouseScore();
+});
+function updateSpouseScore() {
   const spouseLanguageScore =
     spouseLanguage.listening +
     spouseLanguage.reading +
     spouseLanguage.writing +
     spouseLanguage.speaking;
   formValues.spouseLanguageScore = spouseLanguageScore;
-});
+}
 
 //-------------------hide or show common-law partner come with you to Canada--------
 const partnerCitizenOrPrDiv = document.querySelector(".partner-citizen-pr");

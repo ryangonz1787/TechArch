@@ -295,7 +295,21 @@ function calculateCRSScore(formValues) {
         : 0,
 
     foreignWorkExperienceWithCLB7OrHigher: 0,
-    foreignWorkExperienceWithCanadianWorkExperience: 0,
+    foreignWorkExperienceWithCanadianWorkExperience:
+      formValues.selectedForeignExperience === "none"
+        ? 0
+        : formValues.selectedCanadianExperience === "none"
+        ? 0
+        : formValues.selectedForeignExperience === "one-year" ||
+          formValues.selectedForeignExperience === "two-years"
+        ? formValues.selectedCanadianExperience === "one-year"
+          ? 13
+          : 25
+        : formValues.selectedForeignExperience === "three-years"
+        ? formValues.selectedCanadianExperience === "one-year"
+          ? 25
+          : 50
+        : 0,
     certificateQualificationWithCLB5OrHigher: 0,
   };
 
