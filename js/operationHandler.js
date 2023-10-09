@@ -11,6 +11,7 @@ const formValues = {
   siblingCitizenValue: "",
   languageScore: "",
   spouseLanguageScore: 0,
+  CertificateQualification: "no",
 };
 
 /* 
@@ -373,6 +374,26 @@ function calculateCRSScore(formValues) {
   console.log(
     "Points for Foreign Experience:",
     skillTransferabilityPoints.foreignWorkExperienceWithCLB7OrHigher
+  );
+
+  function certificatePoints() {
+    const clbLevel = calculateCLB(languageScore);
+
+    if (formValues.CertificateQualification === "no") {
+      return 0;
+    } else if (clbLevel === "CLB5") {
+      return 25;
+    } else {
+      return 50;
+    }
+  }
+
+  skillTransferabilityPoints.certificateQualificationWithCLB5OrHigher =
+    certificatePoints();
+
+  console.log(
+    "Certification Socre:",
+    skillTransferabilityPoints.certificateQualificationWithCLB5OrHigher
   );
 
   function calculatePointsForEducation(educationLevel, clbLevel) {
