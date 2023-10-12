@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CRS Calculator</title>
 
-    <!-- custom css file link  -->
+    
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/overlay.css" />
 
@@ -60,10 +60,17 @@
                   name="marital-status"
                   value="with"
                   id="common-law"
+                  onmouseover="showCommonLaw(event)" 
+                  onmouseout="hideCommonLaw()"
                   required
                 />
                 Common-Law
               </label>
+
+              <div class="popup" id="popupCommonLaw">
+                A person who has been living with another person in a conjugal relationship for at least one year. The term refers to opposite-sex and same-sex relationships.
+              </div>
+
               <label>
                 <input
                   type="radio"
@@ -71,10 +78,17 @@
                   name="marital-status"
                   value="without"
                   id="divorce-separated"
+                  onmouseover="showDivorced(event)" 
+                  onmouseout="hideDivorced()"
                   required
                 />
                 Divorce / Separated
               </label>
+
+              <div class="popup" id="popupDivorced">
+                Divorced means that a court has granted a divorce and that a marriage has ended. The two people are no longer married.
+              </div>
+
               <label>
                 <input
                   type="radio"
@@ -82,10 +96,19 @@
                   name="marital-status"
                   value="without"
                   id="legally-separated"
+                  onmouseover="showSeparated(event)" 
+                  onmouseout="hideSeparated()"
                   required
                 />
                 Legally Separated
               </label>
+
+              <div class="popup" id="popupSeparated">
+                Separated means that two people are married but no longer living together, and they do not wish to live together again. 
+                They may be waiting for a divorce or have not yet decided to divorce.
+              </div>
+
+
               <label>
                 <input
                   type="radio"
@@ -93,10 +116,18 @@
                   name="marital-status"
                   value="with"
                   id="married"
+                  onmouseover="showMarried(event)" 
+                  onmouseout="hideMarried()"
                   required
                 />
                 Married
               </label>
+
+              <div class="popup" id="popupMarried">
+                Married means that two people have had a ceremony that legally binds them to each other. 
+                This marriage must be recognized under the laws of the country where it was performed and under Canadian law.
+              </div>
+
               <label>
                 <input
                   type="radio"
@@ -115,10 +146,17 @@
                   name="marital-status"
                   value="without"
                   id="widow"
+                  onmouseover="showWidowed(event)" 
+                  onmouseout="hideWidowed()"
                   required
                 />
-                Widow
+                Widowed
               </label>
+
+              <div class="popup" id="popupWidowed">
+                Widowed means that a person’s spouse has died and that person has not remarried or entered into a common-law relationship.
+              </div>
+
             </div>
           </div>
         </div>
@@ -192,10 +230,11 @@
           <div class="sub">
             <p class="p1">
               Choose the best answer:<br />
-              If you've been invited to apply, enter your age on the date you
-              were invited.<br />
+              If you've been invited to apply via 
+              <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees/application-process/express-entry.html">Provincial Nomination (PN) Express Entry</a>, 
+              enter your age on the date you were invited.<br />
               OR<br />
-              If you plan to complete an Express Entry profile, enter your
+              If you plan to complete an <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile.html">Express Entry profile</a>, enter your
               current age.<br />
             </p>
             <input
@@ -210,8 +249,8 @@
           <div class="sub-question international-course">
             <label for="international-course">
               4a. Enter the highest level of education for which you: earned a
-              Canadian degree, diploma or certificate or had an Educational
-              Credential Assessment (ECA) if you did your study outside Canada.
+              Canadian degree, diploma or certificate OR had an <a href = "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/education-assessed.html">
+                Educational Credential Assessment (ECA)</a> if you did your study outside Canada.
               (ECAs must be from an approved agency, in the last five years)
             </label>
 
@@ -290,7 +329,9 @@
           </div>
         </div>
 
-        <p>What is your level of English ability?</p>
+        <p>What is your level of English ability? The Official English Proficiency 
+          Assessments can be viewed <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/language-requirements/language-testing.html">
+            here</a> </p>
         <div class="question language">
           <div class="speaking">
             <label for="language-speaking"> Speaking</label>
@@ -388,8 +429,7 @@
           </div>
         </div>
         <div class="sub-question know-french">
-          <p>Do you know French ?</p>
-
+          <p>Have you taken any Certified French Language Tests that's valid for two years? </p>
           <label>
             <input
               type="radio"
@@ -415,7 +455,9 @@
           </label>
         </div>
         <div class="question french-language" style="display: none">
-          <p>What is your level of French ability?</p>
+          <p>What is your level of French ability? The Official French Proficiency 
+          Assessments can be viewed <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/language-requirements/language-testing.html">
+            here</a></p>
           <div class="language2">
             <div class="reading">
               <label for="french-reading" style="margin-left: 0.5rem">
@@ -544,7 +586,7 @@
           <div class="sub-question canadian-work-experience">
             <p>
               i. In the last ten years, how many years of skilled work
-              experience in Canada do you have?
+              experience in Canada do you have? You may refer to this <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/find-national-occupation-code.html">LINK</a> to check if your Canadian Work Experience and Job Title may qualify.
             </p>
 
             <select class="drop-input" id="work-experience" required>
@@ -554,14 +596,14 @@
               <option value="two-years">Two Years</option>
               <option value="three-years">Three Years</option>
               <option value="four-years">Four Years</option>
-              <option value="five-years">Fiver Years</option>
-              <option value="five-years-or-more">Fiver Years or More</option>
+              <option value="five-years">Five Years</option>
+              <option value="five-years-or-more">Five Years or More</option>
             </select>
           </div>
           <div class="sub-question foreign-work-experience">
             <label for="foreign-work-experience">
               ii. In the last 10 years, how many total years of foreign skilled
-              work experience do you have?
+              work experience do you have? You may refer to this <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/find-national-occupation-code.html">LINK</a> to check if your Foreign Work Experience and Job Title may qualify
             </label>
 
             <select class="drop-input" id="foreign-work-experience" required>
@@ -576,7 +618,7 @@
 
         <div class="question certificate-qualification">
           <label for="certificate-qualification">
-            Do you have a certificate of qualification from a Canadian province,
+            Do you have a <a href="https://www.cic.gc.ca/english/helpcentre/answer.asp?qnum=743">certificate of qualification</a> from a Canadian province,
             territory, or federal body?
           </label>
 
@@ -590,9 +632,31 @@
         <div class="question job-offer">
           <div class="valid-job-offer">
             <p>
-              8. Do you have a valid job offer supported by a Labour Market
-              Impact Assessment
+              8. Do you have a valid job offer supported by a <a 
+                onmouseover="showLMIA(event)" 
+                onmouseout="hideLMIA()">
+                  Labour Market Impact Assessment (LMIA)?</a>
             </p>
+
+            <div class="popup" id ="popupLMIA">
+              <p>A Labour Market Impact Assessment (LMIA) is a document that an employer in Canada may need to get before hiring a foreign worker.</p>
+
+              <p>A positive LMIA will show that there is a need for a foreign worker to fill the job. It will also show that no Canadian worker or permanent resident is available to do the job. A positive LMIA is sometimes called a confirmation letter.</p>
+
+              <p>If the employer needs an LMIA, they must apply for one.</p>
+
+              <p>Once an employer gets the LMIA, the worker can apply for a work permit.</p>
+
+              <p>To apply for a work permit, a worker needs:</p>
+
+              <p>- a job offer letter</p>
+              <p>- a contract</p>
+              <p>- a copy of the LMIA, and</p>
+              <p>-the LMIA number</p>
+            </div>
+
+
+
             <label>
               <input
                 type="radio"
@@ -619,7 +683,7 @@
 
           <!-- if yes then ask for the teer -->
           <div class="sub-question job-offer-noc-teer" style="display: none">
-            <label for="noc-teer">8a Which NOC TEER is the job offer? </label>
+            <label for="noc-teer">8a Which <a href="https://noc.esdc.gc.ca/?GoCTemplateCulture=en-CA">NOC TEER</a> is the job offer? </label>
             <select class="drop-input" id="noc-teer" required>
               <option value="">select</option>
               <option value="noc-zero">NOC Teer 0 Major group 00</option>
@@ -633,7 +697,7 @@
 
         <div class="question nomination-certificate">
           <p>
-            9. Do you have a nomination certificate from a province or
+            9. Do you have a <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees/application-process/express-entry.html">nomination certificate</a> from a province or
             territory?
           </p>
           <label>
@@ -872,6 +936,7 @@
         class="btn"
         id="showResult"
         onclick="calculateCRSScore(formValues)"
+        
       >
         Calculate CRS Score
       </button>

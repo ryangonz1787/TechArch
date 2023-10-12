@@ -29,6 +29,17 @@ p {
   font-size: large;
 }
 
+.popup {
+  display: none;
+  position: absolute;
+  background-color: #f3f189;
+  border: 1px solid #140a0a;
+  padding: 10px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  size: 15px;
+}
+
 input {
   background-color: rgb(231, 238, 238);
   height: 4rem;

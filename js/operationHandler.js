@@ -14,6 +14,82 @@ const formValues = {
   CertificateQualification: "no",
 };
 
+    // Function to show and hide the popup
+    function showCommonLaw(event) {
+      var popup = document.getElementById("popupCommonLaw");
+      popup.style.left = event.clientX + "px";
+      popup.style.top = (event.clientY - 30) + "px";
+      popup.style.display = "block";
+    }
+
+    function hideCommonLaw() {
+      var popup = document.getElementById("popupCommonLaw");
+      popup.style.display = "none";
+    }
+
+  
+    function showDivorced(event) {
+      var popup = document.getElementById("popupDivorced");
+      popup.style.left = event.clientX + "px";
+      popup.style.top = (event.clientY - 30) + "px";
+      popup.style.display = "block";
+    }
+
+    function hideDivorced() {
+      var popup = document.getElementById("popupDivorced");
+      popup.style.display = "none";
+    }
+
+    function showSeparated(event) {
+      var popup = document.getElementById("popupSeparated");
+      popup.style.left = event.clientX + "px";
+      popup.style.top = (event.clientY - 30) + "px";
+      popup.style.display = "block";
+    }
+
+    function hideSeparated() {
+      var popup = document.getElementById("popupSeparated");
+      popup.style.display = "none";
+    }
+
+
+    function showMarried(event) {
+      var popup = document.getElementById("popupMarried");
+      popup.style.left = event.clientX + "px";
+      popup.style.top = (event.clientY - 30) + "px";
+      popup.style.display = "block";
+    }
+
+    function hideMarried() {
+      var popup = document.getElementById("popupMarried");
+      popup.style.display = "none";
+    }
+
+    function showWidowed(event) {
+      var popup = document.getElementById("popupWidowed");
+      popup.style.left = event.clientX + "px";
+      popup.style.top = (event.clientY - 30) + "px";
+      popup.style.display = "block";
+    }
+
+    function hideWidowed() {
+      var popup = document.getElementById("popupWidowed");
+      popup.style.display = "none";
+    }
+
+    function showLMIA(event) {
+      var popup = document.getElementById("popupLMIA");
+      popup.style.left = event.clientX + "px";
+      popup.style.top = (event.clientY - 30) + "px";
+      popup.style.display = "block";
+    }
+
+    function hideLMIA() {
+      var popup = document.getElementById("popupLMIA");
+      popup.style.display = "none";
+    }
+
+
 /* 
 age: "23"
 canadianCourse : "BachelorDegree"
@@ -392,7 +468,7 @@ function calculateCRSScore(formValues) {
     certificatePoints();
 
   console.log(
-    "Certification Socre:",
+    "Certification Score:",
     skillTransferabilityPoints.certificateQualificationWithCLB5OrHigher
   );
 
@@ -479,6 +555,132 @@ function calculateCRSScore(formValues) {
     0
   );
 
+
+  function calculateFSW(formValues) {
+    const pointsFSW = {
+      age:
+        formValues.age <= 17
+          ? 0
+          : formValues.age >= 18 && formValues.age <= 35
+          ? formValues.maritalStatus === "with" &&
+            formValues.partnerComesToCanada === "yes"
+            ? 12
+            : 12
+          : formValues.age == 36
+          ? formValues.maritalStatus === "with" &&
+            formValues.partnerComesToCanada === "yes"
+            ? 11
+            : 11
+          : formValues.age >= 37 
+          ? formValues.maritalStatus === "with" &&
+            formValues.partnerComesToCanada === "yes"
+            ? 10
+            : 10
+          : formValues.age == 38
+          ? formValues.maritalStatus === "with" &&
+            formValues.partnerComesToCanada === "yes"
+            ? 9
+            : 9
+          : formValues.age == 39
+          ? formValues.maritalStatus === "with" &&
+            formValues.partnerComesToCanada === "yes"
+            ? 8
+            : 8
+          : formValues.age == 40
+          ? formValues.maritalStatus === "with" &&
+            formValues.partnerComesToCanada === "yes"
+            ? 7
+            : 7
+          : formValues.age == 41
+          ? formValues.maritalStatus === "with" &&
+            formValues.partnerComesToCanada === "yes"
+            ? 6
+            : 6
+          : formValues.age == 42
+          ? formValues.maritalStatus === "with" &&
+            formValues.partnerComesToCanada === "yes"
+            ? 5
+            : 5
+          : formValues.age == 43
+          ? formValues.maritalStatus === "with" &&
+            formValues.partnerComesToCanada === "yes"
+            ? 4
+            : 4
+          : formValues.age == 44
+          ? formValues.maritalStatus === "with" &&
+            formValues.partnerComesToCanada === "yes"
+            ? 3
+            : 3
+          : formValues.age == 45
+          ? formValues.maritalStatus === "with" &&
+            formValues.partnerComesToCanada === "yes"
+            ? 2
+            : 2
+          : formValues.age == 46
+          ? formValues.maritalStatus === "with" &&
+            formValues.partnerComesToCanada === "yes"
+            ? 1
+            : 1
+          : formValues.age >= 47
+          ? formValues.maritalStatus === "with" &&
+            formValues.partnerComesToCanada === "yes"
+            ? 0
+            : 0
+          : 0,
+  
+      internationlEducation:
+        formValues.internationalEducation === "none"
+          ? formValues.maritalStatus === "with" &&
+            formValues.partnerComesToCanada === "yes"
+            ? 0
+            : 0
+          : formValues.internationalEducation === "SecondaryDiploma"
+          ? formValues.maritalStatus === "with" &&
+            formValues.partnerComesToCanada === "yes"
+            ? 5
+            : 5
+          : formValues.internationalEducation === "OneYearProgram"
+          ? formValues.maritalStatus === "with" &&
+            formValues.partnerComesToCanada === "yes"
+            ? 15
+            : 15
+          : formValues.internationalEducation === "TwoYearProgram"
+          ? formValues.maritalStatus === "with" &&
+            formValues.partnerComesToCanada === "yes"
+            ? 19
+            : 19
+          : formValues.internationalEducation === "BachelorDegree"
+          ? formValues.maritalStatus === "with" &&
+            formValues.partnerComesToCanada === "yes"
+            ? 21
+            : 21
+          : formValues.internationalEducation === "TwoOrMoreDegrees"
+          ? formValues.maritalStatus === "with" &&
+            formValues.partnerComesToCanada === "yes"
+            ? 22
+            : 22
+          : formValues.internationalEducation === "MastersDegree"
+          ? formValues.maritalStatus === "with" &&
+            formValues.partnerComesToCanada === "yes"
+            ? 23
+            : 23
+          : formValues.internationalEducation === "PhD"
+          ? formValues.maritalStatus === "with" &&
+            formValues.partnerComesToCanada === "yes"
+            ? 25
+            : 25
+          : 0,
+  
+      CLB:
+        formValues.maritalStatus === "with" &&
+        formValues.partnerComesToCanada === "yes"
+          ? formValues.languageScore - 8
+          : formValues.languageScore,
+    };
+  
+  }
+
+
   // Calculate the grand total
   const grandTotal =
     coreHumanCapitalTotal +
@@ -538,5 +740,7 @@ function calculateCRSScore(formValues) {
 
   resultDiv.innerHTML = `
     <p>CRS Score: ${grandTotal}</p>
-   `;
-}
+    
+   `;}
+
+  
